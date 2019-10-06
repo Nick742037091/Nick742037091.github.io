@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -38,8 +38,6 @@
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Nick的日常</span>
                 </a>
@@ -112,80 +110,69 @@
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Nick的日常</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
+  <div class="mobile-head bg-color">
     
+    <div class="logo-name">Nick的日常</div>
+    <div class="logo-desc">
+       
+    </div>
+  </div>
 
-    <ul class="menu-list mobile-menu-list">
+  
+
+  <ul class="menu-list mobile-menu-list">
+    
+    <li class="m-nav-item">
+      
+      <a href="/" class="waves-effect waves-light">
         
-<li class="m-nav-item">
-			
-				<a href="/" class="waves-effect waves-light">
-					
-					<i class="fa-fw fas fa-home"></i>
-					
-					首页
-				</a>
-          
-        </li>
+        <i class="fa-fw fas fa-home"></i>
+         首页
+      </a>
+      
+    </li>
+    
+    <li class="m-nav-item">
+      
+      <a href="/tags" class="waves-effect waves-light">
         
-<li class="m-nav-item">
-			
-				<a href="/tags" class="waves-effect waves-light">
-					
-					<i class="fa-fw fas fa-tags"></i>
-					
-					标签
-				</a>
-          
-        </li>
+        <i class="fa-fw fas fa-tags"></i>
+         标签
+      </a>
+      
+    </li>
+    
+    <li class="m-nav-item">
+      
+      <a href="/categories" class="waves-effect waves-light">
         
-<li class="m-nav-item">
-			
-				<a href="/categories" class="waves-effect waves-light">
-					
-					<i class="fa-fw fas fa-bookmark"></i>
-					
-					分类
-				</a>
-          
-        </li>
+        <i class="fa-fw fas fa-bookmark"></i>
+         分类
+      </a>
+      
+    </li>
+    
+    <li class="m-nav-item">
+      
+      <a href="/archives" class="waves-effect waves-light">
         
-<li class="m-nav-item">
-			
-				<a href="/archives" class="waves-effect waves-light">
-					
-					<i class="fa-fw fas fa-archive"></i>
-					
-					归档
-				</a>
-          
-        </li>
+        <i class="fa-fw fas fa-archive"></i>
+         归档
+      </a>
+      
+    </li>
+    
+    <li class="m-nav-item">
+      
+      <a href="/about" class="waves-effect waves-light">
         
-<li class="m-nav-item">
-			
-				<a href="/about" class="waves-effect waves-light">
-					
-					<i class="fa-fw fas fa-user-circle"></i>
-					
-					关于
-				</a>
-          
-        </li>
-        
-        
-    </ul>
+        <i class="fa-fw fas fa-user-circle"></i>
+         关于
+      </a>
+      
+    </li>
+     
+  </ul>
 </div>
 
         </div>
@@ -252,7 +239,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">2</a></span>
+    <span class="count"><a href="/">1</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -282,7 +269,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">2</a></span>
+    <span class="count"><a href="/">1</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -408,7 +395,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -450,7 +437,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"测试","value":1},{"name":"算法","value":1}],
+                data: [{"name":"测试","value":0},{"name":"算法","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -474,7 +461,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["入门","js","快速排序"]
+                data: ["js","快速排序","入门"]
             }
         ],
         yAxis: [
@@ -487,7 +474,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1,1],
+                data: [1,1,0],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -680,47 +667,6 @@
 
                 
 
-                
-                
-<div id="myGallery" class="my-gallery">
-    <div class="title center-align" data-aos="zoom-in-up">
-        <i class="far fa-image"></i>&nbsp;&nbsp;相册
-    </div>
-    <div class="row">
-        
-        
-        <div class="photo col s12 m6 l4" data-aos="fade-up">
-            <div class="img-item" data-src="/medias/featureimages/0.jpg">
-                <img src="/medias/featureimages/0.jpg" class="responsive-img">
-            </div>
-        </div>
-        
-        <div class="photo col s12 m6 l4" data-aos="fade-up">
-            <div class="img-item" data-src="/medias/featureimages/1.jpg">
-                <img src="/medias/featureimages/1.jpg" class="responsive-img">
-            </div>
-        </div>
-        
-        <div class="photo col s12 m6 l4" data-aos="fade-up">
-            <div class="img-item" data-src="/medias/featureimages/2.jpg">
-                <img src="/medias/featureimages/2.jpg" class="responsive-img">
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<script>
-    $(function () {
-        let animateClass = 'animated pulse';
-        $('#myGallery .photo').hover(function () {
-            $(this).addClass(animateClass);
-        }, function () {
-            $(this).removeClass(animateClass);
-        });
-    });
-</script>
                 
 
             </div>
