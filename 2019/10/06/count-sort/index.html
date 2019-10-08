@@ -4,14 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="快速排序, Nick的日常">
-    <meta name="description" content="快速排序是比较常用的一种排序算法，复杂度为 O(nlog(n))，使用的是分而治之的方法。
-目标
-实现数组升序排序
-
-基本思路
-以数组中间值作为参考，将数组拆分为小数区域(小于等于中间值的元素)和大数区域(大于中间值的元素)。
-对小数区域和">
+    <meta name="keywords" content="计数排序, Nick的日常">
+    <meta name="description" content="计数排序是一种分布式排序算法，分布式排序使用已组织好的辅助数据结构（称为桶）,然后进行合并，得到排好序的数组。计数排序是用来排序正整数的优秀算法，时间复杂度为 O(n+k),k 为临时计数数组的大小。计数排序需要更多的内存来存放临时数组。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>快速排序 | Nick的日常</title>
+    <title>计数排序 | Nick的日常</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -192,13 +187,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        快速排序
+                        计数排序
                     </div>
                 </div>
             </div>
@@ -334,7 +329,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-02
+                    2019-10-06
                 </div>
 
                 
@@ -350,79 +345,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>快速排序是比较常用的一种排序算法，复杂度为 O(nlog(n))，使用的是分而治之的方法。</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><blockquote>
-<p>实现数组升序排序</p>
-</blockquote>
-<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ol>
-<li>以数组中间值作为参考，将数组拆分为小数区域(小于等于中间值的元素)和大数区域(大于中间值的元素)。</li>
-<li>对小数区域和大数区域分布进行 1 操作，递归直至拆分后的区域只有一个元素。</li>
-</ol>
-<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> quickSort <span class="token operator">=</span> arry <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token function">quick</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> arry<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                <p>计数排序是一种分布式排序算法，分布式排序使用已组织好的辅助数据结构（称为桶）,然后进行合并，得到排好序的数组。<br>计数排序是用来排序正整数的优秀算法，时间复杂度为 O(n+k),k 为临时计数数组的大小。计数排序需要更多的内存来存放临时数组。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>使用一个用来存储每个元素在原始数组（0 至最大值）中出现次数的临时数组，迭代临时数组，并根据元素出现次数，依次添加到结果数组中。</p>
+<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ * arry 数组
+ * asc 是否升序排序
+ **/</span>
+<span class="token keyword">const</span> countSort <span class="token operator">=</span> <span class="token punctuation">(</span>arry<span class="token punctuation">,</span> asc <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>arry<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> arry
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> max <span class="token operator">=</span> <span class="token function">findMaxValue</span><span class="token punctuation">(</span>arry<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> counts <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>max <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  arry<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>counts<span class="token punctuation">[</span>item<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      counts<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+    counts<span class="token punctuation">[</span>item<span class="token punctuation">]</span><span class="token operator">++</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  counts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>asc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      count<span class="token operator">--</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> res
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// 元素长度大于1，才进行排序。</span>
-<span class="token comment" spellcheck="true">// 将元素拆分为左右大小区域，然后分别对左右区域进行拆分。</span>
-<span class="token keyword">const</span> quick <span class="token operator">=</span> <span class="token punctuation">(</span>arry<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> length <span class="token punctuation">}</span> <span class="token operator">=</span> arry
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token function">partition</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token function">quick</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> left<span class="token punctuation">,</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">></span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token function">quick</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> index<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+<span class="token keyword">const</span> findMaxValue <span class="token operator">=</span> arry <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> max <span class="token operator">=</span> arry<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arry<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>arry<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> max<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      max <span class="token operator">=</span> arry<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 从数组两侧往中间遍历，以中间元素作为参考值。左侧向中间查找大于或等于参考值的元素，右侧向中间查找小于或等于参考值的元素。将查找到的左右两侧的元素进行替换，继续往中间查找。当左侧索引大于右侧索引，停止查找。最终左侧的元素都小于右侧的元素。</span>
-<span class="token keyword">const</span> partition <span class="token operator">=</span> <span class="token punctuation">(</span>arry<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> asc <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> pivot <span class="token operator">=</span> arry<span class="token punctuation">[</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>left <span class="token operator">+</span> right<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-  <span class="token keyword">let</span> i <span class="token operator">=</span> left
-  <span class="token keyword">let</span> j <span class="token operator">=</span> right
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// {3}</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>arry<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pivot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      i<span class="token operator">++</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>arry<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> pivot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      j<span class="token operator">--</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// {4}</span>
-      <span class="token function">swapInList</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span>
-      i<span class="token operator">++</span>
-      j<span class="token operator">--</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> i
-<span class="token punctuation">}</span>
-
-<span class="token keyword">const</span> swapInList <span class="token operator">=</span> <span class="token punctuation">(</span>list<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  temp <span class="token operator">=</span> list<span class="token punctuation">[</span>a<span class="token punctuation">]</span>
-  list<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">[</span>b<span class="token punctuation">]</span>
-  list<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> temp
+  <span class="token keyword">return</span> max
 <span class="token punctuation">}</span></code></pre>
-<p>假设中间参考值为 m。<br>对行 3 取 i === j 时，存在以下几种情况:</p>
-<ol>
-<li><p><code>arry[i] === arry[j] === m</code>，则 <code>i++,j--</code>，函数返回 i。对应于行 4 ，i === j 的情况。</p>
-<blockquote>
-<p><img src="/medias/quick-sort/1.png" alt=""></p>
-</blockquote>
-</li>
-<li><p><code>arry[i] === arry[j] &lt; m</code>，则 <code>i++</code>，j 不变，函数返回 i。</p>
-<blockquote>
-<p><img src="/medias/quick-sort/2.png" alt=""><br>或者<br><img src="/medias/quick-sort/3.png" alt=""></p>
-</blockquote>
-</li>
-<li><p><code>arry[i] === arry[j] &gt; m</code>，则 i 不变,<code>j--</code>，函数返回 i。</p>
-<blockquote>
-<p><img src="/medias/quick-sort/4.png" alt=""><br>或者<br><img src="/medias/quick-sort/5.png" alt=""></p>
-</blockquote>
-<p>因此数组中索引 0~i-1 为小数区域，&gt;=i 为大数区域，left &lt;= i &lt;= right。</p>
-</li>
-</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -483,25 +446,26 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/06/count-sort/">
+                <a href="/2019/10/08/bucket-sort/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="计数排序">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="桶排序">
                         
-                        <span class="card-title">计数排序</span>
+                        <span class="card-title">桶排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            计数排序是一种分布式排序算法，分布式排序使用已组织好的辅助数据结构（称为桶）,然后进行合并，得到排好序的数组。计数排序是用来排序正整数的优秀算法，时间复杂度为 O(n+k),k 为临时计数数组的大小。计数排序需要更多的内存来存放临时数组。
-
+                            桶排序是一种分布式排序算法，时间复杂度为O(n+k)。
+基本思路它根据元素大小将数组分为不同的桶(较小的数组),再使用一个简单的排序算法，例如插入排序(适合小数组的排序)，来对每个桶进行排序，最后将所有的桶合并为结果数组。
+示例代码（js）
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-08
                         </span>
                         <span class="publish-author">
                             
@@ -530,7 +494,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fas fa-chevron-right"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/10/02/quick-sort/">
@@ -570,7 +534,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
