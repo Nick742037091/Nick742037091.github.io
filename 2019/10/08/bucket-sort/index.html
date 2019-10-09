@@ -5,9 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="桶排序, Nick的日常">
-    <meta name="description" content="桶排序是一种分布式排序算法，时间复杂度为O(n+k)。
+    <meta name="description" content="桶排序是一种分布式排序算法，时间复杂度为 O(n+k)。
 基本思路它根据元素大小将数组分为不同的桶(较小的数组),再使用一个简单的排序算法，例如插入排序(适合小数组的排序)，来对每个桶进行排序，最后将所有的桶合并为结果数组。
-示例代码（js）">
+示例代码（js">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,6 +310,10 @@
                                 <span class="chip bg-color">js</span>
                             </a>
                         
+                            <a href="/tags/排序/">
+                                <span class="chip bg-color">排序</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -346,7 +350,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>桶排序是一种分布式排序算法，时间复杂度为O(n+k)。</p>
+                <p>桶排序是一种分布式排序算法，时间复杂度为 O(n+k)。</p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>它根据元素大小将数组分为不同的桶(较小的数组),再使用一个简单的排序算法，例如插入排序(适合小数组的排序)，来对每个桶进行排序，最后将所有的桶合并为结果数组。</p>
 <h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
  * arry 数组
@@ -466,32 +470,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/08/bucket-sort/">
+                <a href="/2019/10/09/base-sort/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="桶排序">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="基数排序">
                         
-                        <span class="card-title">桶排序</span>
+                        <span class="card-title">基数排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            桶排序是一种分布式排序算法，时间复杂度为O(n+k)。
-基本思路它根据元素大小将数组分为不同的桶(较小的数组),再使用一个简单的排序算法，例如插入排序(适合小数组的排序)，来对每个桶进行排序，最后将所有的桶合并为结果数组。
-示例代码（js）
+                            基数排序是一种分布式排序算法，是根据数字的基数(如十进制数基数为 10)将整数分布到桶中。
+基本思路以十进制数为例，先根据个位数字，利用桶排序法(10 个桶)进行排序，生成新数组。再对十位数字进行排序，生成新数组。以此类推，最高位排序之后即
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -504,12 +506,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/js/">
                         <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/排序/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
                 </div>
@@ -560,6 +565,10 @@
                     
                     <a href="/tags/js/">
                         <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/排序/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
                 </div>
