@@ -396,6 +396,59 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/10/10/Fisher-Yates-random/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Fisher-Yates随机算法">
+                            
+                            <span class="card-title">Fisher-Yates随机算法</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一种适用于对数组进行随机排序的算法。
+基本思路迭代数组，从最后一位开始将当前位置和一个随机位置进行交互，这个随机位置比当前位置小。这样，这个算法可以保证随机过的位置不会再被随机一次。
+示例代码（js）const swapInList = (
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/算法/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/js/">
+                            <span class="chip bg-color">js</span>
+                        </a>
+                        
+                        <a href="/tags/随机/">
+                            <span class="chip bg-color">随机</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/10/09/interpolation-search/">
                         <div class="card-image">
                             
@@ -409,8 +462,8 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组。
-基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大值，重新计算索引进行对比；若查找值大于 inde
+                                内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。
+基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大
                             
                         </div>
                         <div class="publish-info">
@@ -461,8 +514,8 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                二分搜索法是适用于已排序数组的搜索算法。
-基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推，直到找到对应的值或者查找区域只
+                                二分搜索法是适用于已排序数组的搜索算法，时间复杂度为O(log(n))。
+基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推
                             
                         </div>
                         <div class="publish-info">
@@ -655,67 +708,34 @@ $(function () {
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/02/quick-sort/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="快速排序">
-                            
-                            <span class="card-title">快速排序</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                快速排序是比较常用的一种排序算法，复杂度为 O(nlog(n))，使用的是分而治之的方法。
-目标
-实现数组升序排序
-
-基本思路
-以数组中间值作为参考，将数组拆分为小数区域(小于等于中间值的元素)和大数区域(大于中间值的元素)。
-对小数区域和
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/js/">
-                            <span class="chip bg-color">js</span>
-                        </a>
-                        
-                        <a href="/tags/排序/">
-                            <span class="chip bg-color">排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 

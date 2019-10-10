@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="内插搜索法, Nick的日常">
-    <meta name="description" content="内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组。
-基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大值，重新计算索引进行对比；若查找值大于 inde">
+    <meta name="description" content="内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。
+基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -349,7 +349,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组。</p>
+                <p>内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。</p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大值，重新计算索引进行对比；若查找值大于 index 对应的值，则将 index+1 作为最小值，重新计算索引进行对比。以此类推，直到找到对应的值或者查找区域只有一个元素(没有对应的值)。</p>
 <h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
  * 内插搜索法
@@ -431,31 +431,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/09/interpolation-search/">
+                <a href="/2019/10/10/Fisher-Yates-random/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="内插搜索法">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Fisher-Yates随机算法">
                         
-                        <span class="card-title">内插搜索法</span>
+                        <span class="card-title">Fisher-Yates随机算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组。
-基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大值，重新计算索引进行对比；若查找值大于 inde
+                            一种适用于对数组进行随机排序的算法。
+基本思路迭代数组，从最后一位开始将当前位置和一个随机位置进行交互，这个随机位置比当前位置小。这样，这个算法可以保证随机过的位置不会再被随机一次。
+示例代码（js）const swapInList = (
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -468,7 +468,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -476,8 +475,8 @@
                         <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/搜索/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/随机/">
+                        <span class="chip bg-color">随机</span>
                     </a>
                     
                 </div>
@@ -503,8 +502,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二分搜索法是适用于已排序数组的搜索算法。
-基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推，直到找到对应的值或者查找区域只
+                            二分搜索法是适用于已排序数组的搜索算法，时间复杂度为O(log(n))。
+基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推
                         
                     </div>
                     <div class="publish-info">
