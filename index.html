@@ -396,6 +396,60 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/10/14/min-num-coin/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="最少硬币找零问题">
+                            
+                            <span class="card-title">最少硬币找零问题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的的从给定零钱数组中，找出组合成指定金额数量最少的搭配。
+基本思路
+迭代数组，用指定金额减迭代项，得到余数。
+若余数大于 0，用余数代替指定金额，重复 1 步骤，递归至余数
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/算法/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/js/">
+                            <span class="chip bg-color">js</span>
+                        </a>
+                        
+                        <a href="/tags/动态规划算法/">
+                            <span class="chip bg-color">动态规划算法</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/10/10/Fisher-Yates-random/">
                         <div class="card-image">
                             
@@ -438,8 +492,8 @@ $(function () {
                             <span class="chip bg-color">js</span>
                         </a>
                         
-                        <a href="/tags/随机/">
-                            <span class="chip bg-color">随机</span>
+                        <a href="/tags/随机算法/">
+                            <span class="chip bg-color">随机算法</span>
                         </a>
                         
                     </div>
@@ -462,8 +516,8 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。
-基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大
+                                内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为 O(n)，在数组分布均匀时性能最好。
+基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最
                             
                         </div>
                         <div class="publish-info">
@@ -490,8 +544,8 @@ $(function () {
                             <span class="chip bg-color">js</span>
                         </a>
                         
-                        <a href="/tags/搜索/">
-                            <span class="chip bg-color">搜索</span>
+                        <a href="/tags/搜索算法/">
+                            <span class="chip bg-color">搜索算法</span>
                         </a>
                         
                     </div>
@@ -514,8 +568,8 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                二分搜索法是适用于已排序数组的搜索算法，时间复杂度为O(log(n))。
-基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推
+                                二分搜索法是适用于已排序数组的搜索算法，时间复杂度为 O(log(n))。
+基本思路取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推，直到找到对应的值
                             
                         </div>
                         <div class="publish-info">
@@ -542,8 +596,8 @@ $(function () {
                             <span class="chip bg-color">js</span>
                         </a>
                         
-                        <a href="/tags/搜索/">
-                            <span class="chip bg-color">搜索</span>
+                        <a href="/tags/搜索算法/">
+                            <span class="chip bg-color">搜索算法</span>
                         </a>
                         
                     </div>
@@ -594,8 +648,8 @@ $(function () {
                             <span class="chip bg-color">js</span>
                         </a>
                         
-                        <a href="/tags/排序/">
-                            <span class="chip bg-color">排序</span>
+                        <a href="/tags/排序算法/">
+                            <span class="chip bg-color">排序算法</span>
                         </a>
                         
                     </div>
@@ -647,60 +701,8 @@ $(function () {
                             <span class="chip bg-color">js</span>
                         </a>
                         
-                        <a href="/tags/排序/">
-                            <span class="chip bg-color">排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/06/count-sort/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="计数排序">
-                            
-                            <span class="card-title">计数排序</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                计数排序是一种分布式排序算法，分布式排序使用已组织好的辅助数据结构（称为桶）,然后进行合并，得到排好序的数组。计数排序是用来排序正整数的优秀算法，时间复杂度为 O(n+k),k 为临时计数数组的大小。计数排序需要更多的内存来存放临时数组。
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/js/">
-                            <span class="chip bg-color">js</span>
-                        </a>
-                        
-                        <a href="/tags/排序/">
-                            <span class="chip bg-color">排序</span>
+                        <a href="/tags/排序算法/">
+                            <span class="chip bg-color">排序算法</span>
                         </a>
                         
                     </div>

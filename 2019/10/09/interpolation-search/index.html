@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="内插搜索法, Nick的日常">
-    <meta name="description" content="内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。
-基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大">
+    <meta name="description" content="内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为 O(n)，在数组分布均匀时性能最好。
+基本思路利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -309,8 +309,8 @@
                                 <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/搜索/">
-                                <span class="chip bg-color">搜索</span>
+                            <a href="/tags/搜索算法/">
+                                <span class="chip bg-color">搜索算法</span>
                             </a>
                         
                     </div>
@@ -349,7 +349,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为O(n)，在数组分布均匀时性能最好。</p>
+                <p>内插搜索法是改良版的二分搜索法，适用于搜索已排序的数组，时间复杂度为 O(n)，在数组分布均匀时性能最好。</p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>利用数组最大值和最小值，计算出查找值的大概索引 index，若查找值小于 index 对应的值，则将 index-1 作为最大值，重新计算索引进行对比；若查找值大于 index 对应的值，则将 index+1 作为最小值，重新计算索引进行对比。以此类推，直到找到对应的值或者查找区域只有一个元素(没有对应的值)。</p>
 <h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
  * 内插搜索法
@@ -475,8 +475,8 @@
                         <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/随机/">
-                        <span class="chip bg-color">随机</span>
+                    <a href="/tags/随机算法/">
+                        <span class="chip bg-color">随机算法</span>
                     </a>
                     
                 </div>
@@ -502,8 +502,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二分搜索法是适用于已排序数组的搜索算法，时间复杂度为O(log(n))。
-基本思路应用分而治之的思路，取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推
+                            二分搜索法是适用于已排序数组的搜索算法，时间复杂度为 O(log(n))。
+基本思路取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推，直到找到对应的值
                         
                     </div>
                     <div class="publish-info">
@@ -529,8 +529,8 @@
                         <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/搜索/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/搜索算法/">
+                        <span class="chip bg-color">搜索算法</span>
                     </a>
                     
                 </div>

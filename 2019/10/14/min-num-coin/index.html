@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="基数排序, Nick的日常">
-    <meta name="description" content="基数排序是一种分布式排序算法，是根据数字的基数(如十进制数基数为 10)将整数分布到桶中。
-基本思路以十进制数为例，先根据个位数字，利用桶排序法(10 个桶)进行排序，生成新数组。再对十位数字进行排序，生成新数组。以此类推，最高位排序之后即">
+    <meta name="keywords" content="最少硬币找零问题, Nick的日常">
+    <meta name="description" content="动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的的从给定零钱数组中，找出组合成指定金额数量最少的搭配。
+基本思路
+迭代数组，用指定金额减迭代项，得到余数。
+若余数大于 0，用余数代替指定金额，重复 1 步骤，递归至余数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>基数排序 | Nick的日常</title>
+    <title>最少硬币找零问题 | Nick的日常</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -187,13 +189,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        基数排序
+                        最少硬币找零问题
                     </div>
                 </div>
             </div>
@@ -309,8 +311,8 @@
                                 <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/排序算法/">
-                                <span class="chip bg-color">排序算法</span>
+                            <a href="/tags/动态规划算法/">
+                                <span class="chip bg-color">动态规划算法</span>
                             </a>
                         
                     </div>
@@ -333,7 +335,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-09
+                    2019-10-14
                 </div>
 
                 
@@ -349,51 +351,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>基数排序是一种分布式排序算法，是根据数字的基数(如十进制数基数为 10)将整数分布到桶中。</p>
-<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>以十进制数为例，先根据个位数字，利用桶排序法(10 个桶)进行排序，生成新数组。再对十位数字进行排序，生成新数组。以此类推，最高位排序之后即为结果数组。</p>
-<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
- * 基数排序
- * @param {数组} arry
- * @param {基数} base
- * @param {是否升序排序} asc
- */</span>
-<span class="token keyword">const</span> baseSort <span class="token operator">=</span> <span class="token punctuation">(</span>arry<span class="token punctuation">,</span> base <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> asc <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 利用字符串长度获取最大数字长度</span>
-  <span class="token keyword">let</span> maxLength <span class="token operator">=</span> <span class="token number">0</span>
-  arry<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> length <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">></span> maxLength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      maxLength <span class="token operator">=</span> length
+                <p>动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的的从给定零钱数组中，找出组合成指定金额数量最少的搭配。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ol>
+<li>迭代数组，用指定金额减迭代项，得到余数。</li>
+<li>若余数大于 0，用余数代替指定金额，重复 1 步骤，递归至余数为 0。余数为 0 时，返回空数组。</li>
+<li>在步骤 1 的每次迭代中可得到组成余数的零钱数组，和迭代项合并成数组 C。返回所有迭代之中长度最小的数组 C。</li>
+<li>将指定金额和对应的最少数组 C 缓存起来，避免重复查询。</li>
+<li>将所有 1 步骤得到的最少数组合并起来得到最终的最少数组。</li>
+</ol>
+<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> minCoinChange <span class="token operator">=</span> <span class="token punctuation">(</span>coins<span class="token punctuation">,</span> amount<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 缓存各个值对应的最少零钱数组</span>
+  <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token comment" spellcheck="true">// 缓存最少零钱数组长度,初始化为无效大</span>
+  <span class="token keyword">let</span> minNum <span class="token operator">=</span> Number<span class="token punctuation">.</span>MAX_VALUE
+  <span class="token comment" spellcheck="true">// 最终得到的最少零钱数组</span>
+  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">const</span> makceChange <span class="token operator">=</span> value <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> maxLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    arry <span class="token operator">=</span> <span class="token function">baseBucketSort</span><span class="token punctuation">(</span>arry<span class="token punctuation">,</span> i<span class="token punctuation">,</span> base<span class="token punctuation">,</span> asc<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> arry
-<span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> cache<span class="token punctuation">[</span>value<span class="token punctuation">]</span>
+    <span class="token keyword">let</span> min <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-<span class="token keyword">const</span> baseBucketSort <span class="token operator">=</span> <span class="token punctuation">(</span>arry<span class="token punctuation">,</span> index<span class="token punctuation">,</span> base<span class="token punctuation">,</span> asc<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token keyword">const</span> temp <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token comment" spellcheck="true">//创建桶</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> base<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">//根据对应位数字分布到各个桶</span>
-  arry<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> bucketIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>item <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> base
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>asc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      temp<span class="token punctuation">[</span>bucketIndex<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      temp<span class="token punctuation">[</span>base <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> bucketIndex<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token comment" spellcheck="true">//通过桶生成排序后的数组</span>
-  temp<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>list <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    coins<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      newAmount <span class="token operator">=</span> value <span class="token operator">-</span> item
+      <span class="token comment" spellcheck="true">// 余数小于0不处理</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>newAmount <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+      <span class="token keyword">let</span> newMin <span class="token operator">=</span> <span class="token function">makceChange</span><span class="token punctuation">(</span>newAmount<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// 对比得到组成value的最少零钱数组</span>
+      <span class="token comment" spellcheck="true">// 存在余数大于零且无法由零钱组合成(newMin.length === 0)的情况，此时不做处理</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>
+        <span class="token punctuation">(</span>min<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">||</span> newMin<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> min<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token punctuation">(</span>newMin<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">||</span> newAmount <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        min <span class="token operator">=</span> <span class="token punctuation">[</span>item<span class="token punctuation">,</span> <span class="token operator">...</span>newMin<span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true">// 对比得到组成指定金额amount的最少零钱数组</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> amount <span class="token operator">&amp;&amp;</span> min<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> minNum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          minNum <span class="token operator">=</span> min<span class="token punctuation">.</span>length
+          res <span class="token operator">=</span> min
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>cache<span class="token punctuation">[</span>value<span class="token punctuation">]</span> <span class="token operator">=</span> min<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">makceChange</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span>
   <span class="token keyword">return</span> res
 <span class="token punctuation">}</span></code></pre>
 <script>
@@ -452,30 +453,33 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/09/binary-search/">
+                <a href="/2019/10/14/min-num-coin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="二分搜索法">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="最少硬币找零问题">
                         
-                        <span class="card-title">二分搜索法</span>
+                        <span class="card-title">最少硬币找零问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二分搜索法是适用于已排序数组的搜索算法，时间复杂度为 O(log(n))。
-基本思路取数组中间数进行对比，若小于中间数，则取最小值和中间值之间的中间数进行对比；若大于中间数，则取中间数和最大值之间的中间数进行对比。以此类推，直到找到对应的值
+                            动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的的从给定零钱数组中，找出组合成指定金额数量最少的搭配。
+基本思路
+迭代数组，用指定金额减迭代项，得到余数。
+若余数大于 0，用余数代替指定金额，重复 1 步骤，递归至余数
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -488,6 +492,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -495,8 +500,8 @@
                         <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/搜索算法/">
-                        <span class="chip bg-color">搜索算法</span>
+                    <a href="/tags/动态规划算法/">
+                        <span class="chip bg-color">动态规划算法</span>
                     </a>
                     
                 </div>
@@ -510,26 +515,26 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/08/bucket-sort/">
+                <a href="/2019/10/10/Fisher-Yates-random/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="桶排序">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Fisher-Yates随机算法">
                         
-                        <span class="card-title">桶排序</span>
+                        <span class="card-title">Fisher-Yates随机算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            桶排序是一种分布式排序算法，时间复杂度为 O(n+k)。
-基本思路它根据元素大小将数组分为不同的桶(较小的数组),再使用一个简单的排序算法，例如插入排序(适合小数组的排序)，来对每个桶进行排序，最后将所有的桶合并为结果数组。
-示例代码（js
+                            一种适用于对数组进行随机排序的算法。
+基本思路迭代数组，从最后一位开始将当前位置和一个随机位置进行交互，这个随机位置比当前位置小。这样，这个算法可以保证随机过的位置不会再被随机一次。
+示例代码（js）const swapInList = (
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-10
                             </span>
                         <span class="publish-author">
                             
@@ -550,8 +555,8 @@
                         <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/排序算法/">
-                        <span class="chip bg-color">排序算法</span>
+                    <a href="/tags/随机算法/">
+                        <span class="chip bg-color">随机算法</span>
                     </a>
                     
                 </div>
