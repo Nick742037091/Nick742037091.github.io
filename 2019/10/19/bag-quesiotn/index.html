@@ -457,33 +457,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/19/bag-quesiotn/">
+                <a href="/2019/10/20/lcs/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="背包问题">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="最长公共子序列">
                         
-                        <span class="card-title">背包问题</span>
+                        <span class="card-title">最长公共子序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。
-基本思路
-优先排除超重背包和相等重量价值较低的背包。
-遍历所有背包，对于每个背包，按照当前背包重量+1至最大重量作为总重量进行遍历，获取可与当前背包组合的
+                            本文描述的是找出两个字符中以相同顺序出现，但不要求连续（非字符串子串）的最长子字符串。
+基本思路迭代字符串 X，假设当前字符为 a,从第一个字符开始迭代字符串 Y，直到找到相同字符所在的位置 index。往后迭代字符串 X，在下一次迭代字符
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -496,7 +493,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -531,7 +527,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的的从给定零钱数组中，找出组合成指定金额数量最少的搭配。
+                            动态规划是一种将复杂问题分解为更小的子问题来解决的优化技术。本文描述的是从给定零钱数组中，找出组合成指定金额数量最少的搭配。
 基本思路
 迭代数组，用指定金额减迭代项，得到余数。
 若余数大于 0，用余数代替指定金额，重复 1 步骤，递归至余数
