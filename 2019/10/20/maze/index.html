@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="最长公共子序列, Nick的日常">
-    <meta name="description" content="本文描述的是找出两个字符中以相同顺序出现，但不要求连续（非字符串子串）的最长子字符串。
-基本思路迭代字符串 X，假设当前字符为 a,从第一个字符开始迭代字符串 Y，直到找到相同字符所在的位置 index。往后迭代字符串 X，在下一次迭代字符">
+    <meta name="keywords" content="迷宫问题, Nick的日常">
+    <meta name="description" content="本文描述的是找出走出迷宫的问题，迷宫是 NxN 的矩阵，入口为左上角，出口为右下角。
+基本思路假设迷宫矩阵中每个位置为一个方块，每个方块可以是空闲的(值为 1)或者是被阻挡的(值为 0)。
+
+创建一个二级数组 solution 用于存储结果">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>最长公共子序列 | Nick的日常</title>
+    <title>迷宫问题 | Nick的日常</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -187,13 +189,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        最长公共子序列
+                        迷宫问题
                     </div>
                 </div>
             </div>
@@ -309,8 +311,8 @@
                                 <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/动态规划算法/">
-                                <span class="chip bg-color">动态规划算法</span>
+                            <a href="/tags/回溯算法/">
+                                <span class="chip bg-color">回溯算法</span>
                             </a>
                         
                     </div>
@@ -349,23 +351,57 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本文描述的是找出两个字符中以相同顺序出现，但不要求连续（非字符串子串）的最长子字符串。</p>
-<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>迭代字符串 X，假设当前字符为 a,从第一个字符开始迭代字符串 Y，直到找到相同字符所在的位置 index。<br>往后迭代字符串 X，在下一次迭代字符串 Y 的时候从 index+1 开始迭代。以此类推，将所有找到的相同字符串组合成最长公共子序列。</p>
-<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> lcs <span class="token operator">=</span> <span class="token punctuation">(</span>strX<span class="token punctuation">,</span> strY<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token keyword">let</span> startY <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> x <span class="token operator">&lt;</span> strX<span class="token punctuation">.</span>length<span class="token punctuation">;</span> x<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> wX <span class="token operator">=</span> strX<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> y <span class="token operator">=</span> startY<span class="token punctuation">;</span> y <span class="token operator">&lt;</span> strY<span class="token punctuation">.</span>length<span class="token punctuation">;</span> y<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> wY <span class="token operator">=</span> strY<span class="token punctuation">[</span>y<span class="token punctuation">]</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>wX <span class="token operator">===</span> wY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res <span class="token operator">+</span><span class="token operator">=</span> wX
-        startY <span class="token operator">=</span> y <span class="token operator">+</span> <span class="token number">1</span>
-        <span class="token keyword">break</span>
-      <span class="token punctuation">}</span>
+                <p>本文描述的是找出走出迷宫的问题，迷宫是 NxN 的矩阵，入口为左上角，出口为右下角。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>假设迷宫矩阵中每个位置为一个方块，每个方块可以是空闲的(值为 1)或者是被阻挡的(值为 0)。</p>
+<ol>
+<li>创建一个二级数组 solution 用于存储结果。将 solution 的初始位置置 1， 从矩形的初始位置(左上角)开始查找。</li>
+<li>判断当前位置是否位于右下角，如果是的话，将 solution 对应的位置值 1，直接返回。判断当前位置是否为 1，若是的话就 solution 对应的位置值 1，执行下一步，否则直接返回。</li>
+<li>向右(x+1)查找，如果该位置为 0，返回上一级执行步骤 4；如果该位置为 1，将 solution 的对应的位置位置置 1，则执行再向右查找，执行步骤 2，依次类推。</li>
+<li>向下(y+1)查找，如果该位置为 0，返回上一级执执行步骤 5；如果该位置为 1，将 solution 的对应的位置位置置 1，执行步骤 3，依次类推。</li>
+<li>将 solution 的对应的位置位置置 0，结束该位置的查找，返回上一级。</li>
+<li>最终 solution 的置为 1 的位置表示了走出迷宫的路径。</li>
+</ol>
+<p><img src="/medias/maze/1.png" alt=""></p>
+<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> rateInMaze <span class="token operator">=</span> maze <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> solution <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> length <span class="token punctuation">}</span> <span class="token operator">=</span> maze
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> maze<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    solution<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      solution<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> res
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">findPath</span><span class="token punctuation">(</span>maze<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> solution<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> solution
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> findPath <span class="token operator">=</span> <span class="token punctuation">(</span>maze<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> solution<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> length <span class="token punctuation">}</span> <span class="token operator">=</span> maze
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">===</span> length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> y <span class="token operator">===</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    solution<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isSafe</span><span class="token punctuation">(</span>maze<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    solution<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>
+      <span class="token function">findPath</span><span class="token punctuation">(</span>maze<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">,</span> solution<span class="token punctuation">)</span> <span class="token operator">||</span>
+      <span class="token function">findPath</span><span class="token punctuation">(</span>maze<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> solution<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    solution<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> isSafe <span class="token operator">=</span> <span class="token punctuation">(</span>maze<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> length <span class="token punctuation">}</span> <span class="token operator">=</span> maze
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> y <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> x <span class="token operator">&lt;</span> length <span class="token operator">&amp;&amp;</span> y <span class="token operator">&lt;</span> length <span class="token operator">&amp;&amp;</span> maze<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -423,9 +459,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/10/20/maze/">
                     <div class="card-image">
@@ -446,9 +483,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -461,6 +498,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -483,27 +521,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/19/bag-quesiotn/">
+                <a href="/2019/10/20/lcs/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="背包问题">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="最长公共子序列">
                         
-                        <span class="card-title">背包问题</span>
+                        <span class="card-title">最长公共子序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。
-基本思路
-优先排除超重背包和相等重量价值较低的背包。
-遍历所有背包，对于每个背包，按照当前背包重量+1至最大重量作为总重量进行遍历，获取可与当前背包组合的
+                            本文描述的是找出两个字符中以相同顺序出现，但不要求连续（非字符串子串）的最长子字符串。
+基本思路迭代字符串 X，假设当前字符为 a,从第一个字符开始迭代字符串 Y，直到找到相同字符所在的位置 index。往后迭代字符串 X，在下一次迭代字符
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
                             </span>
                         <span class="publish-author">
                             
