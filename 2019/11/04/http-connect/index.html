@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。">
-<meta name="keywords" content="js,动态规划算法">
+  <meta name="description" content="本文主要描述HTTP连接相关的内容。">
+<meta name="keywords" content="HTTP连接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="背包问题">
-<meta property="og:url" content="http://blog.nick-h.cn/2019/10/19/bag-quesiotn/index.html">
+<meta property="og:title" content="HTTP连接">
+<meta property="og:url" content="http://blog.nick-h.cn/2019/11/04/http-connect/index.html">
 <meta property="og:site_name" content="Nick的日常">
-<meta property="og:description" content="本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。">
+<meta property="og:description" content="本文主要描述HTTP连接相关的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-04T15:18:06.000Z">
+<meta property="og:updated_time" content="2019-11-04T16:02:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="背包问题">
-<meta name="twitter:description" content="本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。">
+<meta name="twitter:title" content="HTTP连接">
+<meta name="twitter:description" content="本文主要描述HTTP连接相关的内容。">
 
 
 
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>背包问题 | Nick的日常</title>
+  <title>HTTP连接 | Nick的日常</title>
   
 
 
@@ -221,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.nick-h.cn/2019/10/19/bag-quesiotn/">
+    <link itemprop="mainEntityOfPage" href="http://blog.nick-h.cn/2019/11/04/http-connect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/20139399?s=460&v=4">
@@ -234,7 +234,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          背包问题
+          HTTP连接
         </h2>
 
         <div class="post-meta">
@@ -244,14 +244,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-10-19 18:15:53" itemprop="dateCreated datePublished" datetime="2019-10-19T18:15:53+08:00">2019-10-19</time>
+              <time title="创建时间：2019-11-04 23:32:47" itemprop="dateCreated datePublished" datetime="2019-11-04T23:32:47+08:00">2019-11-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-04 23:18:06" itemprop="dateModified" datetime="2019-11-04T23:18:06+08:00">2019-11-04</time>
+                <time title="修改时间：2019-11-05 00:02:50" itemprop="dateModified" datetime="2019-11-05T00:02:50+08:00">2019-11-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +259,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
             </span>
@@ -283,58 +283,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文描述的是在一组不同重量和价值的背包中，给定最大重量，找出两两组合最大价值的背包。</p>
+        <p>本文主要描述HTTP连接相关的内容。</p>
 <a id="more"></a>
 
-<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ol>
-<li>优先排除超重背包和相等重量价值较低的背包。</li>
-<li>遍历所有背包，对于每个背包，按照当前背包重量+1 至最大重量作为总重量进行遍历，获取可与当前背包组合的背包，得到组合后的价值。</li>
-<li>对比所有的组合的价值，得出最大的总价值和。</li>
-</ol>
-<h2 id="示例代码（js）"><a href="#示例代码（js）" class="headerlink" title="示例代码（js）"></a>示例代码（js）</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> bagQuestion <span class="token operator">=</span> <span class="token punctuation">(</span>bagList<span class="token punctuation">,</span> capacity<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> wMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-  <span class="token keyword">let</span> maxRes <span class="token operator">=</span> <span class="token punctuation">{</span>
-    w1<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    w2<span class="token punctuation">:</span> <span class="token number">0</span>
-  <span class="token punctuation">}</span>
-
-  bagList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>bag <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> weight<span class="token punctuation">,</span> value <span class="token punctuation">}</span> <span class="token operator">=</span> bag
-    <span class="token comment" spellcheck="true">// 排除超重的背包</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>weight <span class="token operator">>=</span> capacity<span class="token punctuation">)</span> <span class="token keyword">return</span>
-    <span class="token comment" spellcheck="true">// 重量一样，价格较低优先的被排除</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>
-      wMap<span class="token punctuation">[</span>weight<span class="token punctuation">]</span> <span class="token operator">===</span> undefined <span class="token operator">||</span>
-      <span class="token punctuation">(</span>wMap<span class="token punctuation">[</span>weight<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> wMap<span class="token punctuation">[</span>weight<span class="token punctuation">]</span><span class="token punctuation">.</span>value <span class="token operator">&lt;</span> value<span class="token punctuation">)</span>
-    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      wMap<span class="token punctuation">[</span>weight<span class="token punctuation">]</span> <span class="token operator">=</span> bag
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> wKey <span class="token keyword">in</span> wMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> w1 <span class="token operator">=</span> <span class="token operator">+</span>wKey
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> total <span class="token operator">=</span> w1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> total <span class="token operator">&lt;=</span> capacity<span class="token punctuation">;</span> total<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> w2 <span class="token operator">=</span> wMap<span class="token punctuation">[</span>total <span class="token operator">-</span> w1<span class="token punctuation">]</span> <span class="token operator">?</span> wMap<span class="token punctuation">[</span>total <span class="token operator">-</span> w1<span class="token punctuation">]</span><span class="token punctuation">.</span>weight <span class="token punctuation">:</span> <span class="token number">0</span>
-      <span class="token comment" spellcheck="true">// 没有可与当前背包组合的背包</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>w2<span class="token punctuation">)</span> <span class="token keyword">continue</span>
-      <span class="token keyword">let</span> curVal <span class="token operator">=</span> <span class="token number">0</span>
-      <span class="token keyword">let</span> maxVal <span class="token operator">=</span> <span class="token number">0</span>
-      <span class="token keyword">const</span> noMax <span class="token operator">=</span> maxRes<span class="token punctuation">.</span>w1 <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> maxRes<span class="token punctuation">.</span>w2 <span class="token operator">===</span> <span class="token number">0</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>noMax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        curVal <span class="token operator">=</span> wMap<span class="token punctuation">[</span>w1<span class="token punctuation">]</span><span class="token punctuation">.</span>value <span class="token operator">+</span> wMap<span class="token punctuation">[</span>w2<span class="token punctuation">]</span><span class="token punctuation">.</span>value
-        maxVal <span class="token operator">=</span> wMap<span class="token punctuation">[</span>maxRes<span class="token punctuation">.</span>w1<span class="token punctuation">]</span><span class="token punctuation">.</span>value <span class="token operator">+</span> wMap<span class="token punctuation">[</span>maxRes<span class="token punctuation">.</span>w2<span class="token punctuation">]</span><span class="token punctuation">.</span>value
-      <span class="token punctuation">}</span>
-      <span class="token comment" spellcheck="true">// 判断每个组合价值得到最大价值的组合</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>noMax <span class="token operator">||</span> curVal <span class="token operator">></span> maxVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        maxRes <span class="token operator">=</span> <span class="token punctuation">{</span>
-          w1<span class="token punctuation">,</span>
-          w2
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> <span class="token punctuation">[</span>wMap<span class="token punctuation">[</span>maxRes<span class="token punctuation">.</span>w1<span class="token punctuation">]</span><span class="token punctuation">,</span> wMap<span class="token punctuation">[</span>maxRes<span class="token punctuation">.</span>w2<span class="token punctuation">]</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre>
+<h3 id="TCP链接"><a href="#TCP链接" class="headerlink" title="TCP链接"></a>TCP链接</h3><p><img alt data-src="/medias/http-connect/1.png"></p>
+<p>HTTP通信是由TCP/IP承载的。TCP流是分段的，由IP分组传送。<br>每个IP分组包括:</p>
+<ul>
+<li>一个IP分组首部（包含了源IP地址和目的IP地址）</li>
+<li>一个TCP段首部（包含了源端口和目的端口）</li>
+<li>一个TCP数据块（HTTP报文）</li>
+</ul>
+<h3 id="影响HTTP性能的因素"><a href="#影响HTTP性能的因素" class="headerlink" title="影响HTTP性能的因素"></a>影响HTTP性能的因素</h3><ul>
+<li>HTTP事务的时延（占据大部分比例）</li>
+<li>TCP连接的握手时延</li>
+<li>延迟确认</li>
+<li>TCP慢启动</li>
+<li>Nagle算法与TCP_NODELAY</li>
+<li>TIME_WAIT累计与端口耗尽</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -363,25 +329,21 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
-              <a href="/tags/动态规划算法/" rel="tag"><i class="fa fa-tag"></i> 动态规划算法</a>
+              <a href="/tags/HTTP连接/" rel="tag"><i class="fa fa-tag"></i> HTTP连接</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/14/min-num-coin/" rel="next" title="最少硬币找零问题">
-                  <i class="fa fa-chevron-left"></i> 最少硬币找零问题
+                <a href="/2019/11/02/css-box-style/" rel="next" title="css盒样式">
+                  <i class="fa fa-chevron-left"></i> css盒样式
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/20/lcs/" rel="prev" title="最长公共子序列">
-                  最长公共子序列 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -420,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思路"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码（js）"><span class="nav-number">2.</span> <span class="nav-text">示例代码（js）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP链接"><span class="nav-number">1.</span> <span class="nav-text">TCP链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#影响HTTP性能的因素"><span class="nav-number">2.</span> <span class="nav-text">影响HTTP性能的因素</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
