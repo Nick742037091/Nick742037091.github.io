@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 css 盒子的一些常用样式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-04T15:18:06.000Z">
+<meta property="og:updated_time" content="2019-11-05T15:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css盒样式">
 <meta name="twitter:description" content="本文主要介绍 css 盒子的一些常用样式。">
@@ -154,12 +154,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-04 23:18:06" itemprop="dateModified" datetime="2019-11-04T23:18:06+08:00">2019-11-04</time>
+                <time title="修改时间：2019-11-05 23:34:08" itemprop="dateModified" datetime="2019-11-05T23:34:08+08:00">2019-11-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -387,6 +387,54 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
+<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 边框宽度 */</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> <span class="token number">2</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 边框宽度，可选择为solid（实线）、dashed（虚线）和dotted（点线）。 */</span>
+  <span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 边框颜色 */</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 简写形式，不限定顺序 */</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">2</span>px solid red<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 可单独指定某边的边框，可选值为border-top/border-right/border-bottom/border-left。 */</span>
+  <span class="token property">border-top</span><span class="token punctuation">:</span> <span class="token number">2</span>px solid red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="圆角"><a href="#圆角" class="headerlink" title="圆角"></a>圆角</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 设置四个角的圆角，可设置为像素和百分比。 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">10</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 设置为50%，可以将正方形变换为圆形，将长方形变成椭圆。 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 将圆角设置为非常大的值，可以将正方形变成原型，将长方形变成胶囊型。 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">999</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 单独设置某个角的圆角，可选值为 border-top-left-radius、
+  border-top-right-radius、border-bottom-left-radius和
+  border-bottom-right-radius*/</span>
+  <span class="token property">border-top-left-radius</span><span class="token punctuation">:</span> <span class="token number">10</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 分别设置四个角的简写方式 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">2</span>px <span class="token number">3</span>px <span class="token number">2</span>px <span class="token number">3</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 对角相同可以简写 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">2</span>px <span class="token number">3</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 设置水平和垂直不对称的圆角，/ 作为间隔 */</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">20</span>px / <span class="token number">30</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="盒阴影"><a href="#盒阴影" class="headerlink" title="盒阴影"></a>盒阴影</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 按照顺序，分别是：x方向偏移；y方向偏移；模糊半径，越大越模糊；
+  扩展阴影半径， 大于0扩展阴影，小于0收缩阴影；阴影颜色。*/</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">5</span>px <span class="token number">5</span>px <span class="token number">2</span>px <span class="token number">2</span>px <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span>, <span class="token number">0</span>, <span class="token number">0</span>, <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span> </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 使用background-image来设置线性渐变。to关键字用于指定渲染的结束方向，
+  因此开始方向就是相反的方向，若不指定就是to bottom。 后面可以带上一种以上
+  的颜色值，以逗号分隔，各种的渲染区域大小是均分的，按照顺序进行渲染，在交界
+  处形成渐变。在颜色之后再带上百分比或者像素值，可以表示颜色开始渲染的边界，
+  默认第一种颜色是0%，最后一种是100%。可以用角度（deg）代替to，指定渲染方向，
+  0deg指垂直向上的方向*/</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right, red, yellow <span class="token number">60%</span>, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 效果见图3 */</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span><span class="token number">45</span>deg, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>图 3<br><img alt data-src="/medias/css-box-style/3.png"></p>
 <h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -472,7 +520,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景颜色"><span class="nav-number">1.</span> <span class="nav-text">背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不透明度"><span class="nav-number">2.</span> <span class="nav-text">不透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景图片"><span class="nav-number">3.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未完待续…"><span class="nav-number">4.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景颜色"><span class="nav-number">1.</span> <span class="nav-text">背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不透明度"><span class="nav-number">2.</span> <span class="nav-text">不透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景图片"><span class="nav-number">3.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边框"><span class="nav-number">4.</span> <span class="nav-text">边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆角"><span class="nav-number">5.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#盒阴影"><span class="nav-number">6.</span> <span class="nav-text">盒阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">7.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未完待续…"><span class="nav-number">8.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -495,13 +543,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
