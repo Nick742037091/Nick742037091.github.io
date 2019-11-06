@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 css 盒子的一些常用样式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-05T15:34:08.000Z">
+<meta property="og:updated_time" content="2019-11-06T14:24:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css盒样式">
 <meta name="twitter:description" content="本文主要介绍 css 盒子的一些常用样式。">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-05 23:34:08" itemprop="dateModified" datetime="2019-11-05T23:34:08+08:00">2019-11-05</time>
+                <time title="修改时间：2019-11-06 22:24:34" itemprop="dateModified" datetime="2019-11-06T22:24:34+08:00">2019-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -435,7 +435,20 @@
   <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span><span class="token number">45</span>deg, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>图 3<br><img alt data-src="/medias/css-box-style/3.png"></p>
-<h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3><script>
+<h3 id="放射渐变"><a href="#放射渐变" class="headerlink" title="放射渐变"></a>放射渐变</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span></span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 可指定渐变形状为cirlcle（圆形）和ellipse（椭圆形）,圆形可指定延时半径(长度)，
+  椭圆形可指定水平和垂直方向的半径（长度或者百分比）。 */</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>circle <span class="token number">20</span>px, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>ellipse <span class="token number">30</span>px <span class="token number">20</span>px, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 也可用关键字替代半径，分别是closest-side（延伸到最近边）、
+  farthest-side（延伸到最远边）、closest-corner（延伸到最近角）和
+  farthest-corner（延伸到最远角） */</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>circle farthest-side, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 可用at关键字指定圆心，分别是距离左侧和顶部的距离。 */</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>circle <span class="token number">20</span>px at <span class="token number">20%</span> <span class="token number">30%</span>, red, green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+``</code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -520,7 +533,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景颜色"><span class="nav-number">1.</span> <span class="nav-text">背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不透明度"><span class="nav-number">2.</span> <span class="nav-text">不透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景图片"><span class="nav-number">3.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边框"><span class="nav-number">4.</span> <span class="nav-text">边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆角"><span class="nav-number">5.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#盒阴影"><span class="nav-number">6.</span> <span class="nav-text">盒阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">7.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未完待续…"><span class="nav-number">8.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景颜色"><span class="nav-number">1.</span> <span class="nav-text">背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不透明度"><span class="nav-number">2.</span> <span class="nav-text">不透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景图片"><span class="nav-number">3.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边框"><span class="nav-number">4.</span> <span class="nav-text">边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆角"><span class="nav-number">5.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#盒阴影"><span class="nav-number">6.</span> <span class="nav-text">盒阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">7.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#放射渐变"><span class="nav-number">8.</span> <span class="nav-text">放射渐变</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
