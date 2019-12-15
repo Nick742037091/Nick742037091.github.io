@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要描述 HTTP 连接相关的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-05T14:10:52.000Z">
+<meta property="og:updated_time" content="2019-11-06T15:01:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP连接">
 <meta name="twitter:description" content="本文主要描述 HTTP 连接相关的内容。">
@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -159,7 +159,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-05 22:10:52" itemprop="dateModified" datetime="2019-11-05T22:10:52+08:00">2019-11-05</time>
+                <time title="修改时间：2019-11-06 23:01:08" itemprop="dateModified" datetime="2019-11-06T23:01:08+08:00">2019-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -293,14 +293,19 @@
 <li>一个 TCP 段首部（包含了源端口和目的端口）</li>
 <li>一个 TCP 数据块（HTTP 报文）</li>
 </ul>
-<h3 id="影响-HTTP-性能的因素"><a href="#影响-HTTP-性能的因素" class="headerlink" title="影响 HTTP 性能的因素"></a>影响 HTTP 性能的因素</h3><ul>
-<li>HTTP 事务的时延</li>
-<li>TCP 连接的握手时延</li>
-<li>延迟确认</li>
-<li>TCP 慢启动</li>
-<li>Nagle 算法与 TCP_NODELAY</li>
-<li>TIME_WAIT 累计与端口耗尽</li>
-</ul>
+<h3 id="HTTP-事务时延的原因"><a href="#HTTP-事务时延的原因" class="headerlink" title="HTTP 事务时延的原因"></a>HTTP 事务时延的原因</h3><ol>
+<li>DNS 解析</li>
+<li>TCP 连接请求</li>
+<li>传输请求报文</li>
+<li>服务器处理事务的时间</li>
+<li>服务器回送响应的时间</li>
+</ol>
+<h3 id="TCP-连接握手"><a href="#TCP-连接握手" class="headerlink" title="TCP 连接握手"></a>TCP 连接握手</h3><p><img alt data-src="/medias/http-connect/2.png"></p>
+<ol>
+<li>客户端请求 TCP 连接，在 TCP 段中带上 SYN 标记。</li>
+<li>服务器返回 TCP 段，带上 SYN 和 ACK 标记。说明连接请求已被接受。</li>
+<li>客户端向服务器发送确认信息，TCP 段带上 ACK 标记。此时可以同时带上请求报文。</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -344,6 +349,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/15/content-layout/" rel="prev" title="css内容布局">
+                  css内容布局 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -382,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-链接"><span class="nav-number">1.</span> <span class="nav-text">TCP 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#影响-HTTP-性能的因素"><span class="nav-number">2.</span> <span class="nav-text">影响 HTTP 性能的因素</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-链接"><span class="nav-number">1.</span> <span class="nav-text">TCP 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-事务时延的原因"><span class="nav-number">2.</span> <span class="nav-text">HTTP 事务时延的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-连接握手"><span class="nav-number">3.</span> <span class="nav-text">TCP 连接握手</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -398,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -411,7 +419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
