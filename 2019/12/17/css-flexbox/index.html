@@ -50,13 +50,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nick的日常">
-<meta property="og:url" content="http://blog.nick-h.cn/tags/随机算法/index.html">
+  <meta name="description" content="本文主要介绍 css 的flex布局。">
+<meta name="keywords" content="css,flex布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css flex布局">
+<meta property="og:url" content="http://blog.nick-h.cn/2019/12/17/css-flexbox/index.html">
 <meta property="og:site_name" content="Nick的日常">
+<meta property="og:description" content="本文主要介绍 css 的flex布局。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-18T15:47:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nick的日常">
+<meta name="twitter:title" content="css flex布局">
+<meta name="twitter:description" content="本文主要介绍 css 的flex布局。">
 
 
 
@@ -66,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 随机算法 | Nick的日常</title>
+  <title>css flex布局 | Nick的日常</title>
   
 
 
@@ -211,50 +216,165 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">随机算法
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.nick-h.cn/2019/12/17/css-flexbox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/20139399?s=460&v=4">
+      <meta itemprop="name" content="Nick H">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick的日常">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          css flex布局
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-17 23:16:39" itemprop="dateCreated datePublished" datetime="2019-12-17T23:16:39+08:00">2019-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 23:47:51" itemprop="dateModified" datetime="2019-12-18T23:47:51+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
+        <p>本文主要介绍 css 的flex布局。</p>
+<a id="more"></a>
+<blockquote>
+<p>注：IE9及更早版本的IE不支持flex布局。</p>
+</blockquote>
+<h2 id="声明flex布局"><a href="#声明flex布局" class="headerlink" title="声明flex布局"></a>声明flex布局</h2><pre class=" language-css"><code class="language-css">  <span class="token property">display</span><span class="token punctuation">:</span>flex</code></pre>
+<h2 id="指定主轴方向（与主轴方向垂直的为辅轴方向）"><a href="#指定主轴方向（与主轴方向垂直的为辅轴方向）" class="headerlink" title="指定主轴方向（与主轴方向垂直的为辅轴方向）"></a>指定主轴方向（与主轴方向垂直的为辅轴方向）</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/*支持row（水平方向,默认值）、column（垂直方向）、row-reverse（水平反向）、
+  column-reverse（垂直反向）  */</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span></code></pre>
+<h2 id="主轴方向的排布"><a href="#主轴方向的排布" class="headerlink" title="主轴方向的排布"></a>主轴方向的排布</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值。若主轴为水平方向，表示排布在左侧；若主轴为垂直方向，表示排布在顶部。 */</span>
+  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示排布在右侧；若主轴为垂直方向，表示排布在底部。 */</span>
+  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> flex-end<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 表示排布在主轴方向上的中间 */</span>
+  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 表示将多余的空间等分后分配到项与项之间 */</span>
+  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 表示将多余的空间等分分配到项与项两侧 */</span>
+  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 利用auto特性，使某一个右侧的空白拉伸至最大值，可实现左右排列，中间留空的效果。
+  其他margin属性类似。 */</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span>auto<span class="token punctuation">;</span></code></pre>
+<h2 id="辅轴方向的对齐"><a href="#辅轴方向的对齐" class="headerlink" title="辅轴方向的对齐"></a>辅轴方向的对齐</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值。表示辅轴方向的尺寸拉伸至最大值。align-items为其他值时，
+  会取消拉伸效果至可包含内部元素。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> stretch<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示位于顶部对齐；若主轴为垂直方向，表示对齐位于左侧对齐。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示位于底部对齐；若主轴为垂直方向，表示对齐位于右侧对齐。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-end<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示相对于垂直方向中间对齐；
+    若主轴为垂直方向，表示相对于水平方向中间对齐。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示相对于行内文本基线对齐； 
+    若主轴为垂直方向，和flex-start效果相同。*/</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> baseline<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 只适用于设置子项，支持flex-start/flex-start/center，
+    效果与align-items类似，但只作用于单独子项。 */</span>
+  <span class="token property">align-self</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-10T23:50:33+08:00"
-              content="2019-10-10">
-          10-10
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+              <a href="/tags/flex布局/" rel="tag"><i class="fa fa-tag"></i> flex布局</a>
+          </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2019/10/10/Fisher-Yates-random/" itemprop="url">
-            <span itemprop="name">Fisher-Yates随机算法</span>
-          </a>
-      </h3>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/15/content-layout/" rel="next" title="css内容布局">
+                  <i class="fa fa-chevron-left"></i> css内容布局
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -283,6 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
