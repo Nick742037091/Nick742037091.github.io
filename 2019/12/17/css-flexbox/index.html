@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 css 的flex布局。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-18T15:47:51.000Z">
+<meta property="og:updated_time" content="2019-12-19T14:37:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css flex布局">
 <meta name="twitter:description" content="本文主要介绍 css 的flex布局。">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 23:47:51" itemprop="dateModified" datetime="2019-12-18T23:47:51+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-19 22:37:02" itemprop="dateModified" datetime="2019-12-19T22:37:02+08:00">2019-12-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,6 +321,27 @@
   <span class="token comment" spellcheck="true">/* 只适用于设置子项，支持flex-start/flex-start/center，
     效果与align-items类似，但只作用于单独子项。 */</span>
   <span class="token property">align-self</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span></code></pre>
+<h2 id="可伸缩的尺寸"><a href="#可伸缩的尺寸" class="headerlink" title="可伸缩的尺寸"></a>可伸缩的尺寸</h2><p>根据flex-basis 、flex-grow和flex-shrink伸缩子项尺寸的步骤如下：</p>
+<ol>
+<li>根据flex-basis分配基本尺寸。</li>
+<li>若1分配后有剩余空间，根据flex-grow的比例将剩余空间分配给子项。</li>
+<li>若1分配后子项尺寸超出容器尺寸。根据flex-shrink和flex-basis乘积的比例，<br>将超出尺寸进行划分，得出各子项需要收缩的尺寸。</li>
+</ol>
+<pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值，表示若有设置尺寸，取该尺寸的值，若没有，则根据内容大小确定尺寸 */</span>
+  <span class="token property">flex-basis</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 固定尺寸 */</span>
+  <span class="token property">flex-basis</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 相对容器主轴的百分比尺寸 */</span>
+  <span class="token property">flex-basis</span><span class="token punctuation">:</span> <span class="token number">30%</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 延伸比例 */</span>
+  <span class="token property">flex-grow</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 收缩比例 */</span>
+  <span class="token property">flex-shrink</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 一次性设置flex-grow,flex-shrink和flex-basis */</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token number">1</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 只设置flex-grow, 相当于flex:1 0 0px。
+    完全根据flex-grow分配尺寸，是最常用的用法。 */</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -403,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可伸缩的尺寸"><span class="nav-number">5.</span> <span class="nav-text">可伸缩的尺寸</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
