@@ -62,6 +62,18 @@
   <span class="token comment" spellcheck="true">/* 只设置flex-grow, 相当于flex:1 0 0px。
     完全根据flex-grow分配尺寸，是最常用的用法。 */</span>
   <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span></code></pre>
+<h2 id="多行排布"><a href="#多行排布" class="headerlink" title="多行排布"></a>多行排布</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 超过容器宽度，自动换行排布*/</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 与wrap类型，但是从下往上排序*/</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 多行排布时，若容器高度固定，默认将容器高度平均分配给每一行。
+    align-items作用于每一行，用法相同。
+    justify-content作用于每一行，用法相同。
+    align-content会取消高度的平均分配，相当于将所有子项看作整体，
+    在垂直方向上进行排布。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">align-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

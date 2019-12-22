@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 css 的flex布局。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-19T14:37:02.000Z">
+<meta property="og:updated_time" content="2019-12-22T02:45:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css flex布局">
 <meta name="twitter:description" content="本文主要介绍 css 的flex布局。">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-19 22:37:02" itemprop="dateModified" datetime="2019-12-19T22:37:02+08:00">2019-12-19</time>
+                <time title="修改时间：2019-12-22 10:45:02" itemprop="dateModified" datetime="2019-12-22T10:45:02+08:00">2019-12-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -342,6 +342,18 @@
   <span class="token comment" spellcheck="true">/* 只设置flex-grow, 相当于flex:1 0 0px。
     完全根据flex-grow分配尺寸，是最常用的用法。 */</span>
   <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span></code></pre>
+<h2 id="多行排布"><a href="#多行排布" class="headerlink" title="多行排布"></a>多行排布</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 超过容器宽度，自动换行排布*/</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 与wrap类型，但是从下往上排序*/</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 多行排布时，若容器高度固定，默认将容器高度平均分配给每一行。
+    align-items作用于每一行，用法相同。
+    justify-content作用于每一行，用法相同。
+    align-content会取消高度的平均分配，相当于将所有子项看作整体，
+    在垂直方向上进行排布。 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">align-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -424,7 +436,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可伸缩的尺寸"><span class="nav-number">5.</span> <span class="nav-text">可伸缩的尺寸</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可伸缩的尺寸"><span class="nav-number">5.</span> <span class="nav-text">可伸缩的尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行排布"><span class="nav-number">6.</span> <span class="nav-text">多行排布</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
