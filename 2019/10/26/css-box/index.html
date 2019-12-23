@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 css 盒模型的一些相关属性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-04T15:18:06.000Z">
+<meta property="og:updated_time" content="2019-12-23T16:02:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css盒模型">
 <meta name="twitter:description" content="本文主要介绍 css 盒模型的一些相关属性。">
@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">20</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -159,7 +159,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-04 23:18:06" itemprop="dateModified" datetime="2019-11-04T23:18:06+08:00">2019-11-04</time>
+                <time title="修改时间：2019-12-24 00:02:52" itemprop="dateModified" datetime="2019-12-24T00:02:52+08:00">2019-12-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -347,6 +347,8 @@
 <li><p>包含块是直接父元素，可布局区域是父布局的内容块。</p>
 </li>
 <li><p>存在多个浮动元素时，会根据浮动方向(left 或者 right)，按照顺序排列布局。例如，代码中元素出现的顺序是 box1、box2、box3，float 为 left 时实际布局为 box1、box2、box3；float 为 right 时实际布局为 box3、box2、box1。<br><img alt data-src="/medias/css-box/5.png"></p>
+</li>
+<li><p>当float: right之前出现文档内的非float元素时，会导致换行。</p>
 </li>
 <li><p>浮动元素几乎不占据文档流空间，但是在遇到文本的时候，文本不会布局在浮动元素之下，而是避开浮动元素，为其流出空间，从而形成文字环绕在浮动元素四周的效果。<br><br><img alt data-src="/medias/css-box/6.png"></p>
 </li>
@@ -507,7 +509,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -520,7 +522,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

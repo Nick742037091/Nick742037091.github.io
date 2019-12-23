@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>js执行环节和作用域</title>
+    <url>/2019/12/23/js-context-chain/</url>
+    <content><![CDATA[<p>本文主要介绍js执行环境和作用域。</p>
+<a id="more"></a>
+
+<h2 id="执行环境和变量对象"><a href="#执行环境和变量对象" class="headerlink" title="执行环境和变量对象"></a>执行环境和变量对象</h2><p><img alt data-src="/medias/js-context-chain/1.png"></p>
+<ul>
+<li>每个执行环境都有一个与之关联的变量对象，环境中的所有变量和函数都包含在该变量对象中。</li>
+<li>最外围的执行环境是全局执行环境，其变量对象时window。</li>
+<li>执行环境的代码执行完，该环境中的变量和函数将被销毁。</li>
+</ul>
+<h2 id="执行栈和作用域链"><a href="#执行栈和作用域链" class="headerlink" title="执行栈和作用域链"></a>执行栈和作用域链</h2><p><img alt data-src="/medias/js-context-chain/2.png"></p>
+<ul>
+<li>每个函数都有其执行环境。</li>
+<li>当执行环境时，函数的环境被推入环境栈(执行栈)中；<br>执行完成后，环境栈将环境退出，进入之前的执行环境。</li>
+<li>每个执行环境有对应的作用域链。其顶端是当前作用域的变量对象，<br>下一个变量对象来自包含环境,…。这样，一直延伸到全局执行环境。</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>执行环境</tag>
+        <tag>作用域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>css技巧</title>
+    <url>/2019/12/22/css-skill/</url>
+    <content><![CDATA[<p>本文列举列一下css常用技巧。</p>
+<a id="more"></a>
+
+
+<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.parent</span> </span><span class="token punctuation">{</span>
+  <span class="token selector">position: relative;
+  <span class="token class">.son</span> </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-<span class="token number">50%</span>, -<span class="token number">50%</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.parent</span> </span><span class="token punctuation">{</span>
+  <span class="token selector">position: relative;
+  <span class="token class">.son</span> </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 宽高是必须的，否则会扩散到容器尺寸 */</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 相对视窗水平垂直居中 */</span>
+<span class="token selector"><span class="token class">.son</span> </span><span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">50</span>vh <span class="token number">50</span>vw<span class="token punctuation">;</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-<span class="token number">50%</span>, -<span class="token number">50%</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>css flex布局</title>
     <url>/2019/12/17/css-flexbox/</url>
     <content><![CDATA[<p>本文主要介绍 css 的flex布局。</p>
@@ -580,6 +689,8 @@
 <li><p>包含块是直接父元素，可布局区域是父布局的内容块。</p>
 </li>
 <li><p>存在多个浮动元素时，会根据浮动方向(left 或者 right)，按照顺序排列布局。例如，代码中元素出现的顺序是 box1、box2、box3，float 为 left 时实际布局为 box1、box2、box3；float 为 right 时实际布局为 box3、box2、box1。<br><img alt data-src="/medias/css-box/5.png"></p>
+</li>
+<li><p>当float: right之前出现文档内的非float元素时，会导致换行。</p>
 </li>
 <li><p>浮动元素几乎不占据文档流空间，但是在遇到文本的时候，文本不会布局在浮动元素之下，而是避开浮动元素，为其流出空间，从而形成文字环绕在浮动元素四周的效果。<br><br><img alt data-src="/medias/css-box/6.png"></p>
 </li>
