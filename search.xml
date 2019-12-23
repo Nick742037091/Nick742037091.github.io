@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>js执行环节和作用域</title>
+    <title>js执行环境和作用域</title>
     <url>/2019/12/23/js-context-chain/</url>
     <content><![CDATA[<p>本文主要介绍js执行环境和作用域。</p>
 <a id="more"></a>
