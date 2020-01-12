@@ -1,15 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>js原型与继承</title>
+    <url>/2020/01/04/js-prototype/</url>
+    <content><![CDATA[<p>本文主要介绍 js 的原型与继承。</p>
+<a id="more"></a>
+
+<h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><p>每个函数都有一个 prototype(原型)属性，这个属性是一个指针，指向一个对象，这个对象的包含特定类型实例的共享属性和方法。prototype 包含了 constructor 属性，指向该函数（即构造函数）。该函数通过 new 操作创建的实例，包含内置的<code>[[Prototype]]</code>属性（一些浏览器中存在相同含义的<code>__proto__</code>属性），指向原型。所有函数的默认原型是 Object.prototype，Object.prototype 的原型是 null。</p>
+<p>实例中查找属性时，先从实例自身查找，查找不到时，再从原型中查找。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 覆盖原型的name属性</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'nick'</span>
+Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>sex <span class="token operator">=</span> <span class="token number">0</span>
+Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">29</span>
+Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> nick <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> jack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'jack'</span><span class="token punctuation">)</span>
+nick<span class="token punctuation">.</span><span class="token function">showName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// nick</span>
+jack<span class="token punctuation">.</span><span class="token function">showName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// jack</span>
+
+<span class="token comment" spellcheck="true">// 判断原型的两种方法</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">isPrototypeOf</span><span class="token punctuation">(</span>nick<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>nick<span class="token punctuation">)</span> <span class="token operator">===</span> Person<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//true</span>
+
+<span class="token comment" spellcheck="true">// 判断是否在实例和原型中</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'age'</span> <span class="token keyword">in</span> nick<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//true</span>
+<span class="token comment" spellcheck="true">// 判断是否在实例中</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nick<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'age'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//false</span>
+
+<span class="token comment" spellcheck="true">// 获取实例中的属性</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>nick<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// []</span>
+<span class="token comment" spellcheck="true">// 获取原型中的属性</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//  ["name", "sex", "age", "showName"]</span>
+<span class="token comment" spellcheck="true">// 遍历实例和原型中的属性</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> jack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<br>
+
+<p><img alt data-src="/medias/js-prototype/1.png"></p>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> sex<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 实例属性</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex
+  <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">}</span>
+
+Person<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
+  constructor<span class="token punctuation">:</span> Person<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// 原型属性</span>
+  showName<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>原型链：查找实例属性时，若实例本身不存在该属性，会从原型中查找，若原型中找不到，则从上一级原型中查找，直到原型为 null 为止，原型之间的这种关系成为原型链。js 通过原型链实现继承。</p>
+<h2 id="最佳实践-1"><a href="#最佳实践-1" class="headerlink" title="最佳实践"></a>最佳实践</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token keyword">this</span><span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'green'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+SuperType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 使用父类实例作为原型，会导致属性创建在父类实例中，存在数据共享问题。</span>
+  <span class="token comment" spellcheck="true">// 因此调用父类的构造函数，创建子类的属性。</span>
+  SuperType<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// 初始化子类自身的属性</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">inheritPrototype</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 增加一层原型，避免调用父类构造函数导致多余的父类属性，同时也能继承父类原型中的属性</span>
+  <span class="token keyword">function</span> <span class="token function">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  F<span class="token punctuation">.</span>prototype <span class="token operator">=</span> SuperType<span class="token punctuation">.</span>prototype
+  <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// 设置子类原型的构造器</span>
+  obj<span class="token punctuation">.</span>constructor <span class="token operator">=</span> SubType
+  SubType<span class="token punctuation">.</span>prototype <span class="token operator">=</span> obj
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 继承父类原型属性</span>
+<span class="token function">inheritPrototype</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span>
+
+SubType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showAge <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> sup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperType</span><span class="token punctuation">(</span><span class="token string">'sup'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> sub <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubType</span><span class="token punctuation">(</span><span class="token string">'sub'</span><span class="token punctuation">)</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>原型</tag>
+        <tag>继承</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>js执行环境和作用域</title>
     <url>/2019/12/23/js-context-chain/</url>
-    <content><![CDATA[<p>本文主要介绍js执行环境和作用域。</p>
+    <content><![CDATA[<p>本文主要介绍 js 执行环境和作用域。</p>
 <a id="more"></a>
 
 <h2 id="执行环境和变量对象"><a href="#执行环境和变量对象" class="headerlink" title="执行环境和变量对象"></a>执行环境和变量对象</h2><p><img alt data-src="/medias/js-context-chain/1.png"></p>
 <ul>
 <li>每个执行环境都有一个与之关联的变量对象，环境中的所有变量和函数都包含在该变量对象中。</li>
-<li>最外围的执行环境是全局执行环境，其变量对象时window。</li>
+<li>最外围的执行环境是全局执行环境，其变量对象时 window。</li>
 <li>执行环境的代码执行完，该环境中的变量和函数将被销毁。</li>
 </ul>
 <h2 id="执行栈和作用域链"><a href="#执行栈和作用域链" class="headerlink" title="执行栈和作用域链"></a>执行栈和作用域链</h2><p><img alt data-src="/medias/js-context-chain/2.png"></p>
@@ -690,7 +813,7 @@
 </li>
 <li><p>存在多个浮动元素时，会根据浮动方向(left 或者 right)，按照顺序排列布局。例如，代码中元素出现的顺序是 box1、box2、box3，float 为 left 时实际布局为 box1、box2、box3；float 为 right 时实际布局为 box3、box2、box1。<br><img alt data-src="/medias/css-box/5.png"></p>
 </li>
-<li><p>当float: right之前出现文档内的非float元素时，会导致换行。</p>
+<li><p>当 float: right 之前出现文档内的非 float 元素时，会导致换行。</p>
 </li>
 <li><p>浮动元素几乎不占据文档流空间，但是在遇到文本的时候，文本不会布局在浮动元素之下，而是避开浮动元素，为其流出空间，从而形成文字环绕在浮动元素四周的效果。<br><br><img alt data-src="/medias/css-box/6.png"></p>
 </li>
@@ -702,18 +825,22 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
-<h3 id="块级格式化上下文"><a href="#块级格式化上下文" class="headerlink" title="块级格式化上下文"></a>块级格式化上下文</h3><ul>
-<li><p>是 css 的一组规则，设置为块级格式化上下文的盒子，必须自动包含浮动元素，且所有块级盒子的左边界默认与包含块的左边界对齐。</p>
-</li>
-<li><p>设置为块级格式化作用域的方式</p>
-<ol>
-<li>设置 display 为 inline-block 或 table-cell</li>
+<h3 id="块级格式化上下文-BFC"><a href="#块级格式化上下文-BFC" class="headerlink" title="块级格式化上下文(BFC)"></a>块级格式化上下文(BFC)</h3><ul>
+<li>设置为块级格式化作用域的方式<ol>
+<li>设置 display 为 inline-block、flex 相关、table 相关和 grid 相关的类型</li>
 <li>设置 float 不为 none</li>
-<li>设置为绝对定位</li>
+<li>设置 position 为 absolute 或者 fixed</li>
 <li>设置 overflow 不为 visible</li>
 </ol>
 </li>
-<li><p>设置为块级作用域，可以不使用浮动清除实现浮动元素自动撑开父元素的效果和使紧挨浮动元素的文本不延伸到浮动元素下面的效果。</p>
+<li>浮动不会影响其他 BFC 中的布局，因此元素设置为 BFC,会有以下效果：<ol>
+<li>必须自动包含浮动元素，可以使浮动子元素自动撑开父元素。</li>
+<li>不会延伸到相邻的浮动元素底部。</li>
+</ol>
+</li>
+<li>清除浮动只能清除同一 BFC 在它前面的元素的浮动。</li>
+<li>外边距折叠只会发生在同一 BFC 的块级元素之间。</li>
+</ul>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top-block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -748,8 +875,6 @@
     <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
-</li>
-</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
