@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="本文主要介绍 css 的flex布局。">
-<meta name="keywords" content="css,flex布局">
+  <meta name="description" content="收集 GO 语言的一些技巧。 输出println 可用于一般的输出fmt.Println 可用于包括数组、解构体等的格式化输出fmt.Sprint 可用于组合字符串并返回值 交换值// 普通变量 a, b = b, a  // 数组 list := []int{1,3} list[0], list[1] = list[1], list[0] init 函数 每个 go 文件都有一个 init 函数">
+<meta name="keywords" content="技巧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css flex布局">
-<meta property="og:url" content="http://blog.nick-h.cn/2019/12/17/css-flexbox/index.html">
+<meta property="og:title" content="Go 的一些技巧">
+<meta property="og:url" content="http://blog.nick-h.cn/2019/10/18/go-tip/index.html">
 <meta property="og:site_name" content="Nick的日常">
-<meta property="og:description" content="本文主要介绍 css 的flex布局。">
+<meta property="og:description" content="收集 GO 语言的一些技巧。 输出println 可用于一般的输出fmt.Println 可用于包括数组、解构体等的格式化输出fmt.Sprint 可用于组合字符串并返回值 交换值// 普通变量 a, b = b, a  // 数组 list := []int{1,3} list[0], list[1] = list[1], list[0] init 函数 每个 go 文件都有一个 init 函数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-23T16:03:40.000Z">
+<meta property="og:updated_time" content="2020-04-27T02:51:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css flex布局">
-<meta name="twitter:description" content="本文主要介绍 css 的flex布局。">
+<meta name="twitter:title" content="Go 的一些技巧">
+<meta name="twitter:description" content="收集 GO 语言的一些技巧。 输出println 可用于一般的输出fmt.Println 可用于包括数组、解构体等的格式化输出fmt.Sprint 可用于组合字符串并返回值 交换值// 普通变量 a, b = b, a  // 数组 list := []int{1,3} list[0], list[1] = list[1], list[0] init 函数 每个 go 文件都有一个 init 函数">
 
 
 
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>css flex布局 | Nick的日常</title>
+  <title>Go 的一些技巧 | Nick的日常</title>
   
 
 
@@ -221,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.nick-h.cn/2019/12/17/css-flexbox/">
+    <link itemprop="mainEntityOfPage" href="http://blog.nick-h.cn/2019/10/18/go-tip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/20139399?s=460&v=4">
@@ -234,7 +234,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          css flex布局
+          Go 的一些技巧
         </h2>
 
         <div class="post-meta">
@@ -244,14 +244,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-17 23:16:39" itemprop="dateCreated datePublished" datetime="2019-12-17T23:16:39+08:00">2019-12-17</time>
+              <time title="创建时间：2019-10-18 10:17:46" itemprop="dateCreated datePublished" datetime="2019-10-18T10:17:46+08:00">2019-10-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-24 00:03:40" itemprop="dateModified" datetime="2019-12-24T00:03:40+08:00">2019-12-24</time>
+                <time title="修改时间：2020-04-27 10:51:34" itemprop="dateModified" datetime="2020-04-27T10:51:34+08:00">2020-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +259,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
                   </a>
                 </span>
             </span>
@@ -283,77 +283,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文主要介绍 css 的flex布局。</p>
-<a id="more"></a>
-<blockquote>
-<p>注：IE9及更早版本的IE不支持flex布局。</p>
-</blockquote>
-<h2 id="声明flex布局"><a href="#声明flex布局" class="headerlink" title="声明flex布局"></a>声明flex布局</h2><pre class=" language-css"><code class="language-css">  <span class="token property">display</span><span class="token punctuation">:</span>flex</code></pre>
-<h2 id="指定主轴方向（与主轴方向垂直的为辅轴方向）"><a href="#指定主轴方向（与主轴方向垂直的为辅轴方向）" class="headerlink" title="指定主轴方向（与主轴方向垂直的为辅轴方向）"></a>指定主轴方向（与主轴方向垂直的为辅轴方向）</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/*支持row（水平方向,默认值）、column（垂直方向）、row-reverse（水平反向）、
-  column-reverse（垂直反向）  */</span>
-  <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span></code></pre>
-<h2 id="主轴方向的排布"><a href="#主轴方向的排布" class="headerlink" title="主轴方向的排布"></a>主轴方向的排布</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值。若主轴为水平方向，表示排布在左侧；若主轴为垂直方向，表示排布在顶部。 */</span>
-  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示排布在右侧；若主轴为垂直方向，表示排布在底部。 */</span>
-  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> flex-end<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 表示排布在主轴方向上的中间 */</span>
-  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 表示将多余的空间等分后分配到项与项之间 */</span>
-  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 表示将多余的空间等分分配到项与项两侧 */</span>
-  <span class="token property">justify-cotent</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 利用auto特性，使某一个右侧的空白拉伸至最大值，可实现左右排列，中间留空的效果。
-  其他margin属性类似。 */</span>
-  <span class="token property">margin-right</span><span class="token punctuation">:</span>auto<span class="token punctuation">;</span></code></pre>
-<h2 id="辅轴方向的对齐"><a href="#辅轴方向的对齐" class="headerlink" title="辅轴方向的对齐"></a>辅轴方向的对齐</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值。表示辅轴方向的尺寸拉伸至最大值。align-items为其他值时，
-  会取消拉伸效果至可包含内部元素。 */</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> stretch<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示位于顶部对齐；若主轴为垂直方向，表示对齐位于左侧对齐。 */</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示位于底部对齐；若主轴为垂直方向，表示对齐位于右侧对齐。 */</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-end<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示相对于垂直方向中间对齐；
-    若主轴为垂直方向，表示相对于水平方向中间对齐。 */</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 若主轴为水平方向，表示相对于行内文本基线对齐； 
-    若主轴为垂直方向，和flex-start效果相同。*/</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> baseline<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 只适用于设置子项，支持flex-start/flex-start/center，
-    效果与align-items类似，但只作用于单独子项。 */</span>
-  <span class="token property">align-self</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span></code></pre>
-<h2 id="可伸缩的尺寸"><a href="#可伸缩的尺寸" class="headerlink" title="可伸缩的尺寸"></a>可伸缩的尺寸</h2><p>根据flex-basis 、flex-grow和flex-shrink伸缩子项尺寸的步骤如下：</p>
-<ol>
-<li>根据flex-basis分配基本尺寸。</li>
-<li>若1分配后有剩余空间，根据flex-grow的比例将剩余空间分配给子项。</li>
-<li>若1分配后子项尺寸超出容器尺寸。根据flex-shrink和flex-basis乘积的比例，<br>将超出尺寸进行划分，得出各子项需要收缩的尺寸。</li>
-</ol>
-<pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 默认值，表示若有设置尺寸，取该尺寸的值，若没有，则根据内容大小确定尺寸 */</span>
-  <span class="token property">flex-basis</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 固定尺寸 */</span>
-  <span class="token property">flex-basis</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 相对容器主轴的百分比尺寸 */</span>
-  <span class="token property">flex-basis</span><span class="token punctuation">:</span> <span class="token number">30%</span><span class="token punctuation">;</span></code></pre>
-<pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 延伸比例 */</span>
-  <span class="token property">flex-grow</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 收缩比例 */</span>
-  <span class="token property">flex-shrink</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 一次性设置flex-grow,flex-shrink和flex-basis */</span>
-  <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token number">1</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 只设置flex-grow, 相当于flex:1 0 0px。
-    完全根据flex-grow分配尺寸，是最常用的用法。 */</span>
-  <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span></code></pre>
-<h2 id="多行排布"><a href="#多行排布" class="headerlink" title="多行排布"></a>多行排布</h2><pre class=" language-css"><code class="language-css">  <span class="token comment" spellcheck="true">/* 超过容器宽度，自动换行排布*/</span>
-  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 与wrap类型，但是从下往上排序*/</span>
-  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">/* 多行排布时，若容器高度固定，默认将容器高度平均分配给每一行。
-    align-items作用于每一行，用法相同。
-    justify-content作用于每一行，用法相同。
-    align-content会取消高度的平均分配，相当于将所有子项看作整体，
-    在垂直方向上进行排布。 */</span>
-  <span class="token property">align-items</span><span class="token punctuation">:</span> flex-start<span class="token punctuation">;</span>
-  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-  <span class="token property">align-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></code></pre>
+        <p>收集 GO 语言的一些技巧。</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>println 可用于一般的输出<br>fmt.Println 可用于包括数组、解构体等的格式化输出<br>fmt.Sprint 可用于组合字符串并返回值</p>
+<h3 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h3><pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 普通变量</span>
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+
+<span class="token comment" spellcheck="true">// 数组</span>
+list <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span>
+list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
+<h3 id="init-函数"><a href="#init-函数" class="headerlink" title="init 函数"></a>init 函数</h3><ul>
+<li>每个 go 文件都有一个 init 函数，用于实现初始化，会在 main 函数之前自动调用，不可人为调用。</li>
+<li>格式化按照包的依赖关系顺序执行。</li>
+</ul>
+<h3 id="枚举利用-iota-的自动初始化为-0-和自增"><a href="#枚举利用-iota-的自动初始化为-0-和自增" class="headerlink" title="枚举利用 iota 的自动初始化为 0 和自增"></a>枚举利用 iota 的自动初始化为 0 和自增</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> BitFlag <span class="token builtin">int</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    Active BitFlag <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token boolean">iota</span> <span class="token comment" spellcheck="true">// 1 &lt;&lt; 0 == 1</span>
+    Send <span class="token comment" spellcheck="true">// 1 &lt;&lt; 1 == 2</span>
+    Receive <span class="token comment" spellcheck="true">// 1 &lt;&lt; 2 == 4</span>
+<span class="token punctuation">)</span>
+
+flag <span class="token operator">:=</span> Active <span class="token operator">|</span> Send <span class="token comment" spellcheck="true">// == 3</span></code></pre>
+<h3 id="使用位左移与-iota-计数配合可优雅地实现存储单位的常量枚举"><a href="#使用位左移与-iota-计数配合可优雅地实现存储单位的常量枚举" class="headerlink" title="使用位左移与 iota 计数配合可优雅地实现存储单位的常量枚举"></a>使用位左移与 iota 计数配合可优雅地实现存储单位的常量枚举</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> ByteSize <span class="token builtin">float64</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment" spellcheck="true">// 通过赋值给空白标识符来忽略值</span>
+    KB ByteSize <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">*</span><span class="token boolean">iota</span><span class="token punctuation">)</span>
+    MB
+    GB
+    TB
+    PB
+    EB
+    ZB
+    YB
+<span class="token punctuation">)</span></code></pre>
+<h3 id="自增和自减不能用于表达式"><a href="#自增和自减不能用于表达式" class="headerlink" title="自增和自减不能用于表达式"></a>自增和自减不能用于表达式</h3><h3 id="数组和结构体属于值类型，赋值时是值拷贝"><a href="#数组和结构体属于值类型，赋值时是值拷贝" class="headerlink" title="数组和结构体属于值类型，赋值时是值拷贝"></a>数组和结构体属于值类型，赋值时是值拷贝</h3><h3 id="习惯用法：result-err-fun-的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示："><a href="#习惯用法：result-err-fun-的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示：" class="headerlink" title="习惯用法：result,err := fun() 的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示："></a>习惯用法：result,err := fun() 的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示：</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">type</span><span class="token punctuation">,</span><span class="token builtin">error</span><span class="token punctuation">{</span>
+  result<span class="token punctuation">,</span>err <span class="token operator">:=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// 不出错则执行以下操作</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token comment" spellcheck="true">// return ...</span>
+<span class="token punctuation">}</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -382,24 +352,23 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
-              <a href="/tags/flex布局/" rel="tag"><i class="fa fa-tag"></i> flex布局</a>
+              <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/12/15/content-layout/" rel="next" title="css内容布局">
-                  <i class="fa fa-chevron-left"></i> css内容布局
+                <a href="/2019/10/14/min-num-coin/" rel="next" title="最少硬币找零问题">
+                  <i class="fa fa-chevron-left"></i> 最少硬币找零问题
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/12/22/css-skill/" rel="prev" title="css技巧">
-                  css技巧 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/10/19/bag-quesiotn/" rel="prev" title="背包问题">
+                  背包问题 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -439,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明flex布局"><span class="nav-number">1.</span> <span class="nav-text">声明flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定主轴方向（与主轴方向垂直的为辅轴方向）"><span class="nav-number">2.</span> <span class="nav-text">指定主轴方向（与主轴方向垂直的为辅轴方向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主轴方向的排布"><span class="nav-number">3.</span> <span class="nav-text">主轴方向的排布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅轴方向的对齐"><span class="nav-number">4.</span> <span class="nav-text">辅轴方向的对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可伸缩的尺寸"><span class="nav-number">5.</span> <span class="nav-text">可伸缩的尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行排布"><span class="nav-number">6.</span> <span class="nav-text">多行排布</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换值"><span class="nav-number">2.</span> <span class="nav-text">交换值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init-函数"><span class="nav-number">3.</span> <span class="nav-text">init 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举利用-iota-的自动初始化为-0-和自增"><span class="nav-number">4.</span> <span class="nav-text">枚举利用 iota 的自动初始化为 0 和自增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用位左移与-iota-计数配合可优雅地实现存储单位的常量枚举"><span class="nav-number">5.</span> <span class="nav-text">使用位左移与 iota 计数配合可优雅地实现存储单位的常量枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增和自减不能用于表达式"><span class="nav-number">6.</span> <span class="nav-text">自增和自减不能用于表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组和结构体属于值类型，赋值时是值拷贝"><span class="nav-number">7.</span> <span class="nav-text">数组和结构体属于值类型，赋值时是值拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#习惯用法：result-err-fun-的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示："><span class="nav-number">8.</span> <span class="nav-text">习惯用法：result,err := fun() 的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

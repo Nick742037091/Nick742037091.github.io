@@ -17,7 +17,7 @@
 Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'nick'</span>
 Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>sex <span class="token operator">=</span> <span class="token number">0</span>
 Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">29</span>
-Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> nick <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -55,9 +55,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 Person<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
   constructor<span class="token punctuation">:</span> Person<span class="token punctuation">,</span>
   <span class="token comment" spellcheck="true">// 原型属性</span>
-  showName<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  showName<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre>
 <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>原型链：查找实例属性时，若实例本身不存在该属性，会从原型中查找，若原型中找不到，则从上一级原型中查找，直到原型为 null 为止，原型之间的这种关系成为原型链。js 通过原型链实现继承。</p>
 <h2 id="最佳实践-1"><a href="#最佳实践-1" class="headerlink" title="最佳实践"></a>最佳实践</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -65,7 +65,7 @@ Person<span class="token punctuation">.</span>prototype <span class="token opera
   <span class="token keyword">this</span><span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'green'</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 
-SuperType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+SuperType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -78,7 +78,8 @@ SuperType<span class="token punctuation">.</span>prototype<span class="token pun
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">inheritPrototype</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 增加一层原型，避免调用父类构造函数导致多余的父类属性，同时也能继承父类原型中的属性</span>
+  <span class="token comment" spellcheck="true">// 创建新的构造函数，构造函数内容为空，复用父类的原型，</span>
+  <span class="token comment" spellcheck="true">// 从而避免调用父类构造函数导致多余的父类属性，同时也能继承父类原型中的属性</span>
   <span class="token keyword">function</span> <span class="token function">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   F<span class="token punctuation">.</span>prototype <span class="token operator">=</span> SuperType<span class="token punctuation">.</span>prototype
   <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -90,7 +91,7 @@ SuperType<span class="token punctuation">.</span>prototype<span class="token pun
 <span class="token comment" spellcheck="true">// 继承父类原型属性</span>
 <span class="token function">inheritPrototype</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span>
 
-SubType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showAge <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+SubType<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showAge <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> sup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperType</span><span class="token punctuation">(</span><span class="token string">'sup'</span><span class="token punctuation">)</span>
@@ -167,6 +168,111 @@ SubType<span class="token punctuation">.</span>prototype<span class="token punct
         <tag>js</tag>
         <tag>执行环境</tag>
         <tag>作用域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>防抖与节流</title>
+    <url>/2019/12/23/debounce-throttle/</url>
+    <content><![CDATA[<h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ * 防抖，每次触发重新计时
+ * @param {function} fn 处理函数
+ * @param {number} wait 延迟时间时间
+ * @param {boolean} immediate 是否立即触发
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> debounce <span class="token operator">=</span> <span class="token punctuation">(</span>fn<span class="token punctuation">,</span> wait<span class="token punctuation">,</span> immediate <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token keyword">const</span> debounced <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token keyword">const</span> callNow <span class="token operator">=</span> <span class="token operator">!</span>timer
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+    timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>callNow<span class="token punctuation">)</span> result <span class="token operator">=</span> fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result
+  <span class="token punctuation">}</span>
+
+  debounced<span class="token punctuation">.</span>cancel <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+    timer <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> debounced
+<span class="token punctuation">}</span></code></pre>
+<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ *  节流函数，每隔一段时间可触发一次。可控制首次和末次是否触发。
+ * @param {function} fn 处理函数
+ * @param {number} wait 时间间隔
+ * @param {object} options leading: 首次是否触发；trailing末次是否触发。leading和trailing不能同时为false
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> throttle <span class="token operator">=</span> <span class="token punctuation">(</span>
+  fn<span class="token punctuation">,</span>
+  wait<span class="token punctuation">,</span>
+  options <span class="token operator">=</span> <span class="token punctuation">{</span> leading<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> trailing<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token keyword">let</span> preTime <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token keyword">const</span> throttled <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> curTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// a.判断是否首次直接触发</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>preTime <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>options<span class="token punctuation">.</span>leading<span class="token punctuation">)</span> preTime <span class="token operator">=</span> curTime
+    <span class="token keyword">const</span> remainTime <span class="token operator">=</span> wait <span class="token operator">-</span> <span class="token punctuation">(</span>curTime <span class="token operator">-</span> preTime<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>remainTime <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 在超过或等于固定时间间触发</span>
+      <span class="token comment" spellcheck="true">// 1.若定时器已启动，取消定时器，确保不会额外触发一次。</span>
+      <span class="token comment" spellcheck="true">// 2.直接触发事件。</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 刚好remaining === 0</span>
+        <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+        timer <span class="token operator">=</span> <span class="token keyword">null</span>
+      <span class="token punctuation">}</span>
+      fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+      preTime <span class="token operator">=</span> curTime
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>timer <span class="token operator">&amp;&amp;</span> options<span class="token punctuation">.</span>trailing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 在固定时间间隔内触发，若定时器没启动，启动定时器，在remaining时间之后再触发一次。</span>
+      timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">// 若首次不直接触发，需要将preTime值为零作为a处的判断条件</span>
+        preTime <span class="token operator">=</span> options<span class="token punctuation">.</span>leading <span class="token operator">?</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token number">0</span>
+        timer <span class="token operator">=</span> <span class="token keyword">null</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> remainTime<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  throttled<span class="token punctuation">.</span>cancel <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+    preTime <span class="token operator">=</span> <span class="token number">0</span>
+    timer <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> throttled
+<span class="token punctuation">}</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>防抖</tag>
+        <tag>节流</tag>
       </tags>
   </entry>
   <entry>
@@ -1387,6 +1493,76 @@ a<span class="token pseudo-class">:focus</span> </span><span class="token punctu
       <tags>
         <tag>js</tag>
         <tag>动态规划算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go 的一些技巧</title>
+    <url>/2019/10/18/go-tip/</url>
+    <content><![CDATA[<p>收集 GO 语言的一些技巧。</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>println 可用于一般的输出<br>fmt.Println 可用于包括数组、解构体等的格式化输出<br>fmt.Sprint 可用于组合字符串并返回值</p>
+<h3 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h3><pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 普通变量</span>
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+
+<span class="token comment" spellcheck="true">// 数组</span>
+list <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span>
+list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
+<h3 id="init-函数"><a href="#init-函数" class="headerlink" title="init 函数"></a>init 函数</h3><ul>
+<li>每个 go 文件都有一个 init 函数，用于实现初始化，会在 main 函数之前自动调用，不可人为调用。</li>
+<li>格式化按照包的依赖关系顺序执行。</li>
+</ul>
+<h3 id="枚举利用-iota-的自动初始化为-0-和自增"><a href="#枚举利用-iota-的自动初始化为-0-和自增" class="headerlink" title="枚举利用 iota 的自动初始化为 0 和自增"></a>枚举利用 iota 的自动初始化为 0 和自增</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> BitFlag <span class="token builtin">int</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    Active BitFlag <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token boolean">iota</span> <span class="token comment" spellcheck="true">// 1 &lt;&lt; 0 == 1</span>
+    Send <span class="token comment" spellcheck="true">// 1 &lt;&lt; 1 == 2</span>
+    Receive <span class="token comment" spellcheck="true">// 1 &lt;&lt; 2 == 4</span>
+<span class="token punctuation">)</span>
+
+flag <span class="token operator">:=</span> Active <span class="token operator">|</span> Send <span class="token comment" spellcheck="true">// == 3</span></code></pre>
+<h3 id="使用位左移与-iota-计数配合可优雅地实现存储单位的常量枚举"><a href="#使用位左移与-iota-计数配合可优雅地实现存储单位的常量枚举" class="headerlink" title="使用位左移与 iota 计数配合可优雅地实现存储单位的常量枚举"></a>使用位左移与 iota 计数配合可优雅地实现存储单位的常量枚举</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> ByteSize <span class="token builtin">float64</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment" spellcheck="true">// 通过赋值给空白标识符来忽略值</span>
+    KB ByteSize <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">*</span><span class="token boolean">iota</span><span class="token punctuation">)</span>
+    MB
+    GB
+    TB
+    PB
+    EB
+    ZB
+    YB
+<span class="token punctuation">)</span></code></pre>
+<h3 id="自增和自减不能用于表达式"><a href="#自增和自减不能用于表达式" class="headerlink" title="自增和自减不能用于表达式"></a>自增和自减不能用于表达式</h3><h3 id="数组和结构体属于值类型，赋值时是值拷贝"><a href="#数组和结构体属于值类型，赋值时是值拷贝" class="headerlink" title="数组和结构体属于值类型，赋值时是值拷贝"></a>数组和结构体属于值类型，赋值时是值拷贝</h3><h3 id="习惯用法：result-err-fun-的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示："><a href="#习惯用法：result-err-fun-的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示：" class="headerlink" title="习惯用法：result,err := fun() 的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示："></a>习惯用法：result,err := fun() 的方式构造和使用函数，优先判断错误，有错误直接返回。如下所示：</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">type</span><span class="token punctuation">,</span><span class="token builtin">error</span><span class="token punctuation">{</span>
+  result<span class="token punctuation">,</span>err <span class="token operator">:=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// 不出错则执行以下操作</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token comment" spellcheck="true">// return ...</span>
+<span class="token punctuation">}</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>技巧</tag>
       </tags>
   </entry>
   <entry>
