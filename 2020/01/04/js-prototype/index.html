@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Nick的日常">
 <meta property="og:description" content="本文主要介绍 js 的原型与继承。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-27T02:55:40.000Z">
+<meta property="og:updated_time" content="2020-04-29T02:11:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js原型与继承">
 <meta name="twitter:description" content="本文主要介绍 js 的原型与继承。">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-27 10:55:40" itemprop="dateModified" datetime="2020-04-27T10:55:40+08:00">2020-04-27</time>
+                <time title="修改时间：2020-04-29 10:11:49" itemprop="dateModified" datetime="2020-04-29T10:11:49+08:00">2020-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -358,14 +358,25 @@ SuperType<span class="token punctuation">.</span>prototype<span class="token pun
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">inheritPrototype</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 创建新的构造函数，构造函数内容为空，复用父类的原型，</span>
+  <span class="token comment" spellcheck="true">// 寄生式继承：</span>
+  <span class="token comment" spellcheck="true">// 创建空对象，复用父类的原型，以此对象作为子类原型。</span>
   <span class="token comment" spellcheck="true">// 从而避免调用父类构造函数导致多余的父类属性，同时也能继承父类原型中的属性</span>
+  <span class="token comment" spellcheck="true">// 方式1</span>
   <span class="token keyword">function</span> <span class="token function">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   F<span class="token punctuation">.</span>prototype <span class="token operator">=</span> SuperType<span class="token punctuation">.</span>prototype
   <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token comment" spellcheck="true">// 设置子类原型的构造器</span>
   obj<span class="token punctuation">.</span>constructor <span class="token operator">=</span> SubType
   SubType<span class="token punctuation">.</span>prototype <span class="token operator">=</span> obj
+  <span class="token comment" spellcheck="true">// 方式2</span>
+  <span class="token comment" spellcheck="true">// SubType.prototype = Object.create(SuperType &amp;&amp; SuperType.prototype, {</span>
+  <span class="token comment" spellcheck="true">//   constructor: {</span>
+  <span class="token comment" spellcheck="true">//     value: SubType,</span>
+  <span class="token comment" spellcheck="true">//     enumerable: false,</span>
+  <span class="token comment" spellcheck="true">//     writable: true,</span>
+  <span class="token comment" spellcheck="true">//     configurable: true,</span>
+  <span class="token comment" spellcheck="true">//   },</span>
+  <span class="token comment" spellcheck="true">// })</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 继承父类原型属性</span>
